@@ -51,15 +51,15 @@ $model = new Mcustom();
                         <?php
                         if($native_ses->get('logged_in')){
                             ?>
-                        <li><a class="getstarted" href="<?php echo base_url(); ?>login/logout">Log Out</a></li>
+                        <li><a class="getstarted" href="<?php echo base_url(); ?>/login/logout">Log Out</a></li>
                             <?php
                         }else if($native_ses->get('logged_siswa')){
                             ?>
-                        <li><a class="getstarted" href="<?php echo base_url(); ?>login/logoutsiswa">Log Out</a></li>
+                        <li><a class="getstarted" href="<?php echo base_url(); ?>/login/logoutsiswa">Log Out</a></li>
                             <?php
                         }else{
                             ?>
-                        <li><a class="getstarted" href="<?php echo base_url(); ?>login">Log In</a></li>
+                        <li><a class="getstarted" href="<?php echo base_url(); ?>/login">Log In</a></li>
                             <?php
                         }
                         ?>

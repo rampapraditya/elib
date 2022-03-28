@@ -45,7 +45,7 @@
             form_data.append('file', foto);
             
             $.ajax({
-                url: "<?php echo base_url(); ?>identitas/proses",
+                url: "<?php echo base_url(); ?>/identitas/proses",
                 dataType: 'JSON',
                 cache: false,
                 contentType: false,

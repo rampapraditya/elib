@@ -7,18 +7,18 @@
             </div>
         </div>
 
-        <script src="<?php echo base_url(); ?>assets/back/vendors/js/vendor.bundle.base.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/vendors/chart.js/Chart.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/vendors/datatables.net/jquery.dataTables.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/dataTables.select.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/off-canvas.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/hoverable-collapse.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/template.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/settings.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/todolist.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/dashboard.js"></script>
-        <script src="<?php echo base_url(); ?>assets/back/js/Chart.roundedBarCharts.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/vendors/js/vendor.bundle.base.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/vendors/chart.js/Chart.min.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/dataTables.select.min.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/off-canvas.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/hoverable-collapse.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/template.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/settings.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/todolist.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/dashboard.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/back/js/Chart.roundedBarCharts.js"></script>
     </body>
 
 </html>
