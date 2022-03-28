@@ -1,0 +1,129 @@
+CRITICAL - 2022-03-27 00:19:44 --> Trying to get property 'kode' of non-object
+#0 D:\wamp64\www\elib\app\Controllers\Home.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\wamp64\\www\\e...', 20, Array)
+#1 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-27 00:23:17 --> Undefined variable: data
+#0 D:\wamp64\www\elib\app\Controllers\Home.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\wamp64\\www\\e...', 71, Array)
+#1 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-27 00:26:55 --> Call to undefined method CodeIgniter\Database\MySQLi\Builder::getRow()
+#0 D:\wamp64\www\elib\app\Controllers\Home.php(37): App\Models\Mcustom->get_as_row('tentang')
+#1 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-27 00:33:50 --> Call to undefined method CodeIgniter\Database\MySQLi\Builder::getRow()
+#0 D:\wamp64\www\elib\app\Controllers\Home.php(37): App\Models\Mcustom->get_as_row('tentang')
+#1 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-27 00:40:00 --> Call to undefined method App\Models\Mcustom::get_query_as_row()
+#0 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#1 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-03-27 00:45:33 --> Trying to get property 'jml' of non-object
+#0 D:\wamp64\www\elib\app\Controllers\Home.php(46): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\wamp64\\www\\e...', 46, Array)
+#1 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-27 00:46:02 --> Undefined property: CodeIgniter\View\View::$nativesession
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(40): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 40, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(69): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 00:55:44 --> Undefined property: CodeIgniter\View\View::$nativesession
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(40): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 40, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 19:49:46 --> Undefined property: CodeIgniter\View\View::$nativesession
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(40): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 40, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 20:18:48 --> Undefined property: CodeIgniter\View\View::$modul
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(166): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 166, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 20:19:59 --> Undefined property: CodeIgniter\View\View::$Mglobals
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(172): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 172, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 20:23:44 --> Undefined property: CodeIgniter\View\View::$Mglobals
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(177): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 177, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 20:24:24 --> Undefined property: CodeIgniter\View\View::$modul
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(229): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 229, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-03-27 20:24:56 --> Undefined property: CodeIgniter\View\View::$modul
+#0 D:\wamp64\www\elib\app\Views\frontend\index.php(267): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\e...', 267, Array)
+#1 D:\wamp64\www\elib\system\View\View.php(210): include('D:\\wamp64\\www\\e...')
+#2 D:\wamp64\www\elib\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\wamp64\www\elib\system\Common.php(1089): CodeIgniter\View\View->render('frontend/index', Array, true)
+#4 D:\wamp64\www\elib\app\Controllers\Home.php(77): view('frontend/index', Array)
+#5 D:\wamp64\www\elib\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 D:\wamp64\www\elib\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\wamp64\www\elib\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\elib\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
