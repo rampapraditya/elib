@@ -91,13 +91,13 @@ class Listpenelitian extends BaseController {
     public function cari() {
         
         // identitas
-        $jml_identitas = $this->Mglobals->getAllQR("SELECT count(*) as jml FROM identitas;")->jml;
+        $jml_identitas = $this->model->getAllQR("SELECT count(*) as jml FROM identitas;")->jml;
         if($jml_identitas > 0){
-            $tersimpan_iden = $this->Mglobals->getAllQR("SELECT logo, alamat, email, tlp FROM identitas;");
-            $logo = base_url().'assets/images/no_image.png';
+            $tersimpan_iden = $this->model->getAllQR("SELECT logo, alamat, email, tlp FROM identitas;");
+            $logo = base_url().'/assets/images/no_image.png';
             if(strlen($tersimpan_iden->logo) > 0){
                 if(file_exists($tersimpan_iden->logo)){
-                    $logo = base_url().substr($tersimpan_iden->logo, 2);
+                    $logo = base_url().substr($tersimpan_iden->logo, 1);
                 }
             }
             $data['logo'] = $logo;
@@ -106,25 +106,25 @@ class Listpenelitian extends BaseController {
             $data['email'] = $tersimpan_iden->email;
             
         }else{
-            $data['logo'] = base_url().'assets/images/no_image.png';
+            $data['logo'] = base_url().'/assets/images/no_image.png';
             $data['alamat'] = '';
             $data['tlp'] = '';
             $data['email'] = '';
         }
         
         // about
-        $jml_tentang = $this->Mglobals->getAllQR("SELECT count(*) as jml FROM tentang;")->jml;
+        $jml_tentang = $this->model->getAllQR("SELECT count(*) as jml FROM tentang;")->jml;
         if($jml_tentang > 0){
-            $tersimpan_tentang = $this->Mglobals->getAllQR("select * from tentang;");
+            $tersimpan_tentang = $this->model->getAllQR("select * from tentang;");
             $data['tentang'] = $tersimpan_tentang->pesan;
         }else{
             $data['tentang'] = "";
         }
         
         // media sosial
-        $jml = $this->Mglobals->getAllQR("select count(*) as jml from medsos")->jml;
+        $jml = $this->model->getAllQR("select count(*) as jml from medsos")->jml;
         if($jml > 0){
-            $tersimpan_med = $this->Mglobals->getAllQR("select * from medsos");
+            $tersimpan_med = $this->model->getAllQR("select * from medsos");
             $data['tw'] = $tersimpan_med->tw;
             $data['ig'] = $tersimpan_med->ig;
             $data['fb'] = $tersimpan_med->fb;
@@ -137,23 +137,23 @@ class Listpenelitian extends BaseController {
             $data['lk'] = "";
         }
         // kelas
-        $data['kelas'] = $this->Mglobals->getAll("kategori_penelitian_sub");
+        $data['kelas'] = $this->model->getAll("kategori_penelitian_sub");
         // kategori penelitian
-        $data['kategori'] = $this->Mglobals->getAll("kategori_penelitian");
+        $data['kategori'] = $this->model->getAll("kategori_penelitian");
         // penelitian
-        $judul = $this->input->post('judul');
-        $katakunci = $this->input->post('katakunci');
-        $strata = $this->input->post('strata');
-        $inputkategori = $this->input->post('kategori');
+        $judul = $this->request->getVar('judul');
+        $katakunci = $this->request->getVar('katakunci');
+        $strata = $this->request->getVar('strata');
+        $inputkategori = $this->request->getVar('kategori');
         
         $data['judul'] = $judul;
         $data['katakunci'] = $katakunci;
         $data['strata'] = $strata;
         $data['nilaikategori'] = $inputkategori;
         
-        $data['penelitian'] = $this->Mglobals->getAllQ("select a.* from penelitian a where a.judul like '%".$judul."%' and a.katakunci like '%".$katakunci."%' and a.idkategori like '%".$inputkategori."%' and a.strata like '%".$strata."%' order by a.tanggal desc limit 50;");
+        $data['penelitian'] = $this->model->getAllQ("select a.* from penelitian a where a.judul like '%".$judul."%' and a.katakunci like '%".$katakunci."%' and a.idkategori like '%".$inputkategori."%' and a.strata like '%".$strata."%' order by a.tanggal desc limit 50;");
         
         
-        $this->load->view('frontend/listpenelitian', $data);
+        echo view('frontend/listpenelitian', $data);
     }
 }

@@ -39,11 +39,11 @@ $model = new Mcustom();
                 </a>
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link" href="<?php echo base_url(); ?>/welcome">Home</a></li>
-                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/welcome#about">Special Book</a></li>
+                        <li><a class="nav-link" href="<?php echo base_url(); ?>/home">Home</a></li>
+                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/home#about">Special Book</a></li>
                         <li><a class="nav-link" href="<?php echo base_url(); ?>/listpenelitian">Research</a></li>
-                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/welcome#recent-blog-posts">News</a></li>
-                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/welcome#contact">Contact</a></li>
+                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/home#recent-blog-posts">News</a></li>
+                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/home#contact">Contact</a></li>
                         <?php
                         if($native_ses->get('logged_in')){
                             ?>

@@ -105,5 +105,16 @@ class Mcustom {
         return $query;
     }
     
-    
+    public function autokode($depan, $kolom, $table, $awal, $akhir) {
+        $hasil = "";
+        $data = $this->getAllQR("select ifnull(MAX(substr(".$kolom.",".$awal.",".$akhir.")),0) + 1 as jml from ".$table.";");
+        $panjang = strlen($data->jml);
+        $pnjng_nol = ($akhir-$panjang) - $awal;
+        $nol = "";
+        for($i=1; $i<=$pnjng_nol; $i++){
+            $nol .= "0";
+        }
+        $hasil = $depan.$nol.$data->jml;
+        return $hasil;
+    }
 }

@@ -79,41 +79,18 @@ class Home extends BaseController
     
     public function kirimpesan() {
         $data = array(
-            'idinbox' => $this->Mglobals->autokode("I","idinbox","inbox", 2, 7),
-            'nama' => $this->input->post('nama'),
-            'email' => $this->input->post('email'),
-            'judul' => $this->input->post('judul'),
-            'pesan' => $this->input->post('pesan')
+            'idinbox' => $this->model->autokode("I","idinbox","inbox", 2, 7),
+            'nama' => $this->request->getVar('nama'),
+            'email' => $this->request->getVar('email'),
+            'judul' => $this->request->getVar('judul'),
+            'pesan' => $this->request->getVar('pesan')
         );
-        $simpan = $this->Mglobals->add("inbox",$data);
+        $simpan = $this->model->add("inbox",$data);
         if($simpan == 1){
             $status = "Pesan tersimpan";
         }else{
             $status = "Pesan gagal tersimpan";
         }
         echo json_encode(array("status" => $status));
-    }
-    
-    public function test_count() {
-        $model = new Mcustom();
-        $data = $model->select_count("pangkat", "idpangkat");
-        echo $data;
-    }
-    
-    public function test_single_row() {
-        $model = new Mcustom();
-        $kond['idpangkat'] = "P00001";
-        $data = $model->get_as_row_where("pangkat", $kond);
-        echo $data->nama_pangkat;
-    }
-    
-    public function coba_query() {
-        $model = new Mcustom();
-        $data = $model->get_query_as_row("select count(*) as jml from pangkat");
-//        foreach ($data->getResult() as $row) {
-//            echo $row->idpangkat.'<br>';
-//        }
-        
-        echo $data->jml;
     }
 }

@@ -272,7 +272,7 @@ $model = new Mcustom();
                                 </div>
                                 <span class="post-date"><?php echo $row->tgl; ?></span>
                                 <h3 class="post-title"><?php echo $row->judul ?></h3>
-                                <a href="<?php echo base_url(); ?>blogsingle/index/<?php echo $modul->enkrip_url($row->idblog); ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                                <a href="<?php echo base_url(); ?>/blogsingle/index/<?php echo $modul->enkrip_url($row->idblog); ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                             <?php
@@ -438,7 +438,7 @@ $model = new Mcustom();
                     form_data.append('pesan', pesan);
 
                     $.ajax({
-                        url: "<?php echo base_url(); ?>welcome/kirimpesan",
+                        url: "<?php echo base_url(); ?>/home/kirimpesan",
                         dataType: 'JSON',
                         cache: false,
                         contentType: false,
@@ -475,7 +475,7 @@ $model = new Mcustom();
             }
             
             function showlistpenelitian(kode){
-                window.location.href = "<?php echo base_url(); ?>listpenelitian/index/"+kode;
+                window.location.href = "<?php echo base_url(); ?>/listpenelitian/index/"+kode;
             }
             
         </script>
