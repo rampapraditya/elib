@@ -105,48 +105,5 @@ class Mcustom {
         return $query;
     }
     
-    public function join()
-    {
-        /**
-         * SELECT video_games_sales.Name, video_games_genre.genre_name
-         * FROM video_games_sales
-         * LEFT JOIN video_games_genre ON video_games_sales.Genre = video_games_genre.id
-         */
-        $builder = $this->db->table('video_games_sales');
-        $builder->select('video_games_sales.Name, video_games_genre.genre_name');
-        $builder->join('video_games_genre', 'video_games_sales.Genre = video_games_genre.id','left');
-        $query = $builder->get(10,0);
-        return $query;
-    }
-
-    public function and_where()
-    {
-        /**
-         * SELECT * FROM video_games_sales
-         * WHERE Platform = 'PS3' AND Publisher = 'Ubisoft'
-         */
-        $builder = $this->db->table('video_games_sales');
-        $builder->where('Platform', 'PS3');
-        $builder->where('Publisher', 'Ubisoft');
-        $query = $builder->get();
-        return $query;
-    }
-
-    public function where_in()
-    {
-        $builder = $this->db->table('video_games_sales');
-        $platform = ['PS4','PS3'];
-        $builder->whereIn('Platform', $platform);
-        $query = $builder->get();
-        return $query;
-    }
-
-    public function where_not_in()
-    {
-        $builder = $this->db->table('video_games_sales');
-        $platform = ['PS4','PS3'];
-        $builder->whereNotIn('Platform', $platform);
-        $query = $builder->get();
-        return $query;
-    }
+    
 }

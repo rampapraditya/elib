@@ -1,3 +1,15 @@
+<?php
+use App\Libraries\Nativesession;
+use App\Libraries\Modul;
+use App\Models\Mcustom;
+
+// library
+$native_ses = new Nativesession();
+$modul = new Modul();
+
+// model
+$model = new Mcustom();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,15 +19,15 @@
         <meta content="" name="description">
         <meta content="" name="keywords">
         <link href="<?php echo $logo; ?>" rel="icon">
-        <link href="<?php echo base_url(); ?>assets/front/img/apple-touch-icon.png" rel="apple-touch-icon">
-        <link href="<?php echo base_url(); ?>assets/front/css/font.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/vendor/aos/aos.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/vendor/remixicon/remixicon.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/front/css/style.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="<?php echo base_url(); ?>/assets/front/css/font.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/vendor/aos/aos.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/front/css/style.css" rel="stylesheet">
     </head>
 
     <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
@@ -27,23 +39,23 @@
                 </a>
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link" href="<?php echo base_url(); ?>welcome">Home</a></li>
-                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>welcome#about">Special Book</a></li>
-                        <li><a class="nav-link" href="<?php echo base_url(); ?>listpenelitian">Research</a></li>
-                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>welcome#recent-blog-posts">News</a></li>
-                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>welcome#contact">Contact</a></li>
+                        <li><a class="nav-link" href="<?php echo base_url(); ?>/welcome">Home</a></li>
+                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/welcome#about">Special Book</a></li>
+                        <li><a class="nav-link" href="<?php echo base_url(); ?>/listpenelitian">Research</a></li>
+                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/welcome#recent-blog-posts">News</a></li>
+                        <li><a class="nav-link scrollto" href="<?php echo base_url(); ?>/welcome#contact">Contact</a></li>
                         <?php
-                        if($this->nativesession->get('logged_in')){
+                        if($native_ses->get('logged_in')){
                             ?>
-                        <li><a class="getstarted" href="<?php echo base_url(); ?>login/logout">Log Out</a></li>
+                        <li><a class="getstarted" href="<?php echo base_url(); ?>/login/logout">Log Out</a></li>
                             <?php
-                        }else if($this->nativesession->get('logged_siswa')){
+                        }else if($native_ses->get('logged_siswa')){
                             ?>
-                        <li><a class="getstarted" href="<?php echo base_url(); ?>login/logoutsiswa">Log Out</a></li>
+                        <li><a class="getstarted" href="<?php echo base_url(); ?>/login/logoutsiswa">Log Out</a></li>
                             <?php
                         }else{
                             ?>
-                        <li><a class="getstarted" href="<?php echo base_url(); ?>login">Log In</a></li>
+                        <li><a class="getstarted" href="<?php echo base_url(); ?>/login">Log In</a></li>
                             <?php
                         }
                         ?>
@@ -144,7 +156,7 @@
                                 <div class="sidebar-item categories">
                                     <ul>
                                         <?php
-                                        foreach ($dokumen->result() as $row) {
+                                        foreach ($dokumen->getResult() as $row) {
                                             if($rahasia == "ya"){
                                                 ?>
                                         <li><a onclick="unduh('<?php echo $kode; ?>','<?php echo base_url(); ?>singlepenelitian/unduhfile/<?php echo $row->iddokumen; ?>')" style="color: blue;" href="javascript:void(0)"><?php echo $row->judul_dok; ?></a></li>
@@ -162,11 +174,11 @@
                                 <h3 class="sidebar-title" style="margin-top: 15px;">Recent Posts</h3>
                                 <div class="sidebar-item recent-posts">
                                     <?php
-                                    foreach ($lainnya->result() as $row) {
-                                        $defthumb = base_url().'assets/img/noimg.jpg';
+                                    foreach ($lainnya->getResult() as $row) {
+                                        $defthumb = base_url().'/assets/img/noimg.jpg';
                                         if(strlen($row->thumbnail) > 0){
                                             if(file_exists($row->thumbnail)){
-                                                $defthumb = base_url().substr($row->thumbnail, 2);
+                                                $defthumb = base_url().substr($row->thumbnail, 1);
                                             }
                                         }
                                         ?>
@@ -243,14 +255,14 @@
         
 
         <!-- Vendor JS Files -->
-        <script src="<?php echo base_url(); ?>assets/js/jquery-3.5.1.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/vendor/aos/aos.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/vendor/php-email-form/validate.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/vendor/purecounter/purecounter.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/front/js/main.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/js/jquery-3.5.1.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/vendor/aos/aos.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/vendor/php-email-form/validate.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/vendor/purecounter/purecounter.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/front/js/main.js"></script>
         <script type="text/javascript">
             
             $(document).ready(function (){
@@ -283,12 +295,11 @@
             
             function load_komentar(){
                 $.ajax({
-                    url: "<?php echo base_url(); ?>singlepenelitian/ajax_komentar/<?php echo $kode; ?>",
+                    url: "<?php echo base_url(); ?>/singlepenelitian/ajax_komentar/<?php echo $kode; ?>",
                     type: "POST",
                     dataType: "TEXT",
                     success: function (data) {
                         $('#div_komentar').html(data);
-                        
                     }, error: function (jqXHR, textStatus, errorThrown) {
                         alert('Error load komentar');
                     }
@@ -318,7 +329,7 @@
                     form_data.append('komentar', komentar);
 
                     $.ajax({
-                        url: "<?php echo base_url(); ?>singlepenelitian/proseskomentar",
+                        url: "<?php echo base_url(); ?>/singlepenelitian/proseskomentar",
                         dataType: 'JSON',
                         cache: false,
                         contentType: false,
@@ -356,7 +367,7 @@
                 form_data.append('kode', kode);
                 form_data.append('sandi', sandi);
                 $.ajax({
-                    url: "<?php echo base_url(); ?>singlepenelitian/ceksandi",
+                    url: "<?php echo base_url(); ?>/singlepenelitian/ceksandi",
                     dataType: 'JSON',
                     cache: false,
                     contentType: false,

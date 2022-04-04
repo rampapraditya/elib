@@ -61,4 +61,8 @@ class Beranda extends BaseController {
            $this->modul->halaman('login');
         }
     }
+    
+    public function coba() {
+        echo base_url();
+    }
 }

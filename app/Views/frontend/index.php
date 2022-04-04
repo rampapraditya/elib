@@ -45,7 +45,7 @@ $model = new Mcustom();
                     <ul>
                         <li><a class="nav-link scrollto" href="#hero">Home</a></li>
                         <li><a class="nav-link scrollto" href="#about">Special Book</a></li>
-                        <li><a class="nav-link" href="<?php echo base_url(); ?>listpenelitian">Research</a></li>
+                        <li><a class="nav-link" href="<?php echo base_url(); ?>/listpenelitian">Research</a></li>
                         <li><a class="nav-link scrollto" href="#recent-blog-posts">News</a></li>
                         <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                         <?php
