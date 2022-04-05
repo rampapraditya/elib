@@ -93,8 +93,4 @@ class Home extends BaseController
         }
         echo json_encode(array("status" => $status));
     }
-    
-    public function coba(){
-        echo "Atika";
-    }
 }

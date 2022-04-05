@@ -1,0 +1,8 @@
+CRITICAL - 2022-04-04 23:39:41 --> Undefined property: App\Controllers\Identitas::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(239): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 239, Array)
+#1 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(110): App\Controllers\Identitas->updatetanpafoto()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Identitas->proses()
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Identitas))
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

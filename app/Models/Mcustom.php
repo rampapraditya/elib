@@ -70,6 +70,11 @@ class Mcustom {
         return $builder->update($data);
     }
     
+    public function updateNK($table, $data){
+        $builder = $this->db->table($table);
+        return $builder->update($data);
+    }
+    
     public function select_max($tb_name, $kolom) {
         $builder = $this->db->table($tb_name);
         $builder->selectMax($kolom);

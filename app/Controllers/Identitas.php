@@ -80,8 +80,8 @@ class Identitas extends BaseController{
     
     public function proses() {
         if($this->nativesession->get('logged_in')){
-            $config['upload_path'] = './public/assets/temp/';
-            $config['upload_newpath'] = './public/assets/img/';
+            $config['upload_path'] = './assets/temp/';
+            $config['upload_newpath'] = './assets/img/';
             $config['allowed_types'] = 'jpg|jpeg|png';
             $config['max_filename'] = '255';
             $config['encrypt_name'] = TRUE;
@@ -159,52 +159,52 @@ class Identitas extends BaseController{
     }
     
     private function updatedenganfoto($config) {
-//        $logo = $this->model->getAllQR("SELECT logo FROM identitas;")->logo;
-//        if(strlen($logo) > 0){
-//            if(file_exists($logo)){
-//                unlink($logo);
-//            }
-//        }
-//        
-//        $this->load->library('upload', $config);
-//        if ($this->upload->do_upload('file')) {
-//
-//            $datafile = $this->upload->data();
-//            $path = $config['upload_path'].$datafile['file_name'];
-//            $newpath = $config['upload_newpath'].$datafile['file_name'];
-//
-//            $resize_foto = $this->resizeImage($path, $newpath);
-//            if($resize_foto){
-////                $data = array(
-////                    'instansi' => $this->input->post('nama'),
-////                    'slogan' => $this->input->post('slogan'),
-////                    'tahun' => $this->input->post('tahun'),
-////                    'pimpinan' => $this->input->post('pimpinan'),
-////                    'alamat' => $this->input->post('alamat'),
-////                    'kdpos' => $this->input->post('kdpos'),
-////                    'tlp' => $this->input->post('tlp'),
-////                    'fax' => $this->input->post('fax'),
-////                    'email' => $this->input->post('email'),
-////                    'website' => $this->input->post('web'),
-////                    'lat' => $this->input->post('lat'),
-////                    'lon' => $this->input->post('lon'),
-////                    'logo' => $newpath
-////                );
-////                $update = $this->model->updateNK("identitas",$data);
-////                if($update == 1){
-////                    unlink($path);
-////                    $status = "Identitas terupdate";
-////                }else{
-////                    $status = "Identitas gagal terupdate";
-////                }
-//                $status = $this->request->getPost('ins');
-//            }else{
-//                $status = "Resize foto gagal";
-//            }
-//        } else {
-//            $status = $this->upload->display_errors();
-//        }
-        $status = $this->request->getVar('ins');
+        $logo = $this->model->getAllQR("SELECT logo FROM identitas;")->logo;
+        if(strlen($logo) > 0){
+            if(file_exists($logo)){
+                unlink($logo);
+            }
+        }
+        
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('file')) {
+
+            $datafile = $this->upload->data();
+            $path = $config['upload_path'].$datafile['file_name'];
+            $newpath = $config['upload_newpath'].$datafile['file_name'];
+
+            $resize_foto = $this->resizeImage($path, $newpath);
+            if($resize_foto){
+//                $data = array(
+//                    'instansi' => $this->input->post('nama'),
+//                    'slogan' => $this->input->post('slogan'),
+//                    'tahun' => $this->input->post('tahun'),
+//                    'pimpinan' => $this->input->post('pimpinan'),
+//                    'alamat' => $this->input->post('alamat'),
+//                    'kdpos' => $this->input->post('kdpos'),
+//                    'tlp' => $this->input->post('tlp'),
+//                    'fax' => $this->input->post('fax'),
+//                    'email' => $this->input->post('email'),
+//                    'website' => $this->input->post('web'),
+//                    'lat' => $this->input->post('lat'),
+//                    'lon' => $this->input->post('lon'),
+//                    'logo' => $newpath
+//                );
+//                $update = $this->model->updateNK("identitas",$data);
+//                if($update == 1){
+//                    unlink($path);
+//                    $status = "Identitas terupdate";
+//                }else{
+//                    $status = "Identitas gagal terupdate";
+//                }
+                $status = $this->request->getPost('ins');
+            }else{
+                $status = "Resize foto gagal";
+            }
+        } else {
+            $status = $this->upload->display_errors();
+        }
+        
         return $status;
     }
     
@@ -236,18 +236,18 @@ class Identitas extends BaseController{
     
     private function updatetanpafoto() {
         $data = array(
-            'instansi' => $this->input->post('nama'),
-            'slogan' => $this->input->post('slogan'),
-            'tahun' => $this->input->post('tahun'),
-            'pimpinan' => $this->input->post('pimpinan'),
-            'alamat' => $this->input->post('alamat'),
-            'kdpos' => $this->input->post('kdpos'),
-            'tlp' => $this->input->post('tlp'),
-            'fax' => $this->input->post('fax'),
-            'email' => $this->input->post('email'),
-            'website' => $this->input->post('web'),
-            'lat' => $this->input->post('lat'),
-            'lon' => $this->input->post('lon')
+            'instansi' => $this->request->getVar('nama'),
+            'slogan' => $this->request->getVar('slogan'),
+            'tahun' => $this->request->getVar('tahun'),
+            'pimpinan' => $this->request->getVar('pimpinan'),
+            'alamat' => $this->request->getVar('alamat'),
+            'kdpos' => $this->request->getVar('kdpos'),
+            'tlp' => $this->request->getVar('tlp'),
+            'fax' => $this->request->getVar('fax'),
+            'email' => $this->request->getVar('email'),
+            'website' => $this->request->getVar('web'),
+            'lat' => $this->request->getVar('lat'),
+            'lon' => $this->request->getVar('lon')
         );
         $update = $this->model->updateNK("identitas",$data);
         if($update == 1){
