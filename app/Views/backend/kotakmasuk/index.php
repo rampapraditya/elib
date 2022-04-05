@@ -3,7 +3,7 @@
     var table;
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>kotakmasuk/ajaxlist",
+            ajax: "<?php echo base_url(); ?>/kotakmasuk/ajaxlist",
             ordering: false
         });
     });

@@ -20,7 +20,7 @@
         form_data.append('lk', lk);
 
         $.ajax({
-            url: "<?php echo base_url(); ?>medsos/proses",
+            url: "<?php echo base_url(); ?>/medsos/proses",
             dataType: 'JSON',
             cache: false,
             contentType: false,

@@ -4,7 +4,7 @@
 
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>berita/ajaxlist",
+            ajax: "<?php echo base_url(); ?>/berita/ajaxlist",
             ordering: false
         });
     });
@@ -14,13 +14,13 @@
     }
 
     function add() {
-        window.location.href = "<?php echo base_url(); ?>berita/detil";
+        window.location.href = "<?php echo base_url(); ?>/berita/detil";
     }
 
     function hapus(id, judul) {
         if (confirm("Apakah anda yakin menghapus berita " + judul + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>berita/hapus/" + id,
+                url: "<?php echo base_url(); ?>/berita/hapus/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -34,7 +34,7 @@
     }
 
     function ganti(id) {
-        window.location.href = "<?php echo base_url(); ?>berita/detil/"+id;
+        window.location.href = "<?php echo base_url(); ?>/berita/detil/"+id;
     }
     
 </script>
