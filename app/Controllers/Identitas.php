@@ -5,13 +5,14 @@ namespace App\Controllers;
 use App\Models\Mcustom;
 use App\Libraries\Modul;
 use App\Libraries\Nativesession;
+use CodeIgniter\Controller;
 
 /**
  * Description of Identitas
  *
  * @author RAMPA
  */
-class Identitas extends BaseController{
+class Identitas extends Controller{
     
     private $model;
     private $modul;
@@ -159,50 +160,65 @@ class Identitas extends BaseController{
     }
     
     private function updatedenganfoto($config) {
-        $logo = $this->model->getAllQR("SELECT logo FROM identitas;")->logo;
-        if(strlen($logo) > 0){
-            if(file_exists($logo)){
-                unlink($logo);
-            }
-        }
+//        $logo = $this->model->getAllQR("SELECT logo FROM identitas;")->logo;
+//        if(strlen($logo) > 0){
+//            if(file_exists($logo)){
+                //unlink($logo);
+                
+//            }
+//        }
+//        
+//        $this->load->library('upload', $config);
+//        if ($this->upload->do_upload('file')) {
+//
+//            $datafile = $this->upload->data();
+//            $path = $config['upload_path'].$datafile['file_name'];
+//            $newpath = $config['upload_newpath'].$datafile['file_name'];
+//
+//            $resize_foto = $this->resizeImage($path, $newpath);
+//            if($resize_foto){
+//                $data = array(
+//                    'instansi' => $this->request->getVar('nama'),
+//                    'slogan' => $this->request->getVar('slogan'),
+//                    'tahun' => $this->request->getVar('tahun'),
+//                    'pimpinan' => $this->request->getVar('pimpinan'),
+//                    'alamat' => $this->request->getVar('alamat'),
+//                    'kdpos' => $this->request->getVar('kdpos'),
+//                    'tlp' => $this->request->getVar('tlp'),
+//                    'fax' => $this->request->getVar('fax'),
+//                    'email' => $this->request->getVar('email'),
+//                    'website' => $this->request->getVar('web'),
+//                    'lat' => $this->request->getVar('lat'),
+//                    'lon' => $this->request->getVar('lon'),
+//                    'logo' => $newpath
+//                );
+//                $update = $this->model->updateNK("identitas",$data);
+//                if($update == 1){
+//                    unlink($path);
+//                    $status = "Identitas terupdate";
+//                }else{
+//                    $status = "Identitas gagal terupdate";
+//                }
+//            }else{
+//                $status = "Resize foto gagal";
+//            }
+//        } else {
+//            $status = $this->upload->display_errors();
+//        }
         
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')) {
-
-            $datafile = $this->upload->data();
-            $path = $config['upload_path'].$datafile['file_name'];
-            $newpath = $config['upload_newpath'].$datafile['file_name'];
-
-            $resize_foto = $this->resizeImage($path, $newpath);
-            if($resize_foto){
-                $data = array(
-                    'instansi' => $this->request->getVar('nama'),
-                    'slogan' => $this->request->getVar('slogan'),
-                    'tahun' => $this->request->getVar('tahun'),
-                    'pimpinan' => $this->request->getVar('pimpinan'),
-                    'alamat' => $this->request->getVar('alamat'),
-                    'kdpos' => $this->request->getVar('kdpos'),
-                    'tlp' => $this->request->getVar('tlp'),
-                    'fax' => $this->request->getVar('fax'),
-                    'email' => $this->request->getVar('email'),
-                    'website' => $this->request->getVar('web'),
-                    'lat' => $this->request->getVar('lat'),
-                    'lon' => $this->request->getVar('lon'),
-                    'logo' => $newpath
-                );
-                $update = $this->model->updateNK("identitas",$data);
-                if($update == 1){
-                    unlink($path);
-                    $status = "Identitas terupdate";
-                }else{
-                    $status = "Identitas gagal terupdate";
-                }
-            }else{
-                $status = "Resize foto gagal";
-            }
-        } else {
-            $status = $this->upload->display_errors();
-        }
+        $file = $this->request->getFile('file');
+        $name = $file->getName();// Mengetahui Nama File
+        $originalName = $file->getClientName();// Mengetahui Nama Asli
+        $tempfile = $file->getTempName();// Mengetahui Nama TMP File name
+        $ext = $file->getClientExtension();// Mengetahui extensi File
+        $type = $file->getClientMimeType();// Mengetahui Mime File
+        $size_kb = $file->getSize('kb'); // Mengetahui Ukuran File dalam kb
+        $size_mb = $file->getSize('mb');// Mengetahui Ukuran File dalam mb
+        //$namabaru = $file->getRandomName();//define nama fiel yang baru secara acak
+        
+        $file->move(WRITEPATH . 'uploads');
+        $status = $name.' '.$originalName.' ' . $size_kb;
+        
         
         return $status;
     }

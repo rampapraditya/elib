@@ -86,13 +86,13 @@ class Login extends BaseController{
         $this->nativesession->delete('logged_in');
         clearstatcache();
         
-        $this->modul->halaman('welcome');
+        $this->modul->halaman('home');
     }
     
     public function logoutsiswa(){
         $this->nativesession->delete('logged_siswa');
         clearstatcache();
         
-        $this->modul->halaman('welcome');
+        $this->modul->halaman('home');
     }
 }
