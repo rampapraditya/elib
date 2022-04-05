@@ -122,4 +122,11 @@ class Mcustom {
         $hasil = $depan.$nol.$data->jml;
         return $hasil;
     }
+    
+    public function get_by_id($table, $kondisi){
+        $builder = $this->db->table($table);
+        $builder->where($kondisi);
+        $query = $builder->get();
+        return $query->getRowObject();
+    }
 }

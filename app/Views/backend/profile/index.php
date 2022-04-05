@@ -38,7 +38,7 @@
             
             
             $.ajax({
-                url: "<?php echo base_url(); ?>profile/proses",
+                url: "<?php echo base_url(); ?>/profile/proses",
                 dataType: 'JSON',
                 cache: false,
                 contentType: false,
@@ -109,7 +109,7 @@
                             <select id="korps" name="korps" class="form-control">
                                 <option value="-">- Pilih Korps -</option>
                                 <?php
-                                 foreach ($korps->result() as $row) {
+                                 foreach ($korps->getResult() as $row) {
                                      ?>
                                 <option <?php if($row->idkorps == $tersimpan->idkorps){ echo 'selected'; } ?>  value="<?php echo $row->idkorps; ?>"><?php echo $row->nama_korps; ?></option>
                                      <?php
@@ -122,7 +122,7 @@
                             <select id="pangkat" name="pangkat" class="form-control">
                                 <option value="-">- Pilih Pangkat -</option>
                                 <?php
-                                 foreach ($pangkat->result() as $row) {
+                                 foreach ($pangkat->getResult() as $row) {
                                      ?>
                                 <option <?php if($row->idpangkat == $tersimpan->idpangkat){ echo 'selected'; } ?>  value="<?php echo $row->idpangkat; ?>"><?php echo $row->nama_pangkat; ?></option>
                                      <?php

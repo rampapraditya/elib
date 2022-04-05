@@ -6,3 +6,51 @@ CRITICAL - 2022-04-04 23:39:41 --> Undefined property: App\Controllers\Identitas
 #4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #5 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
 #6 {main}
+CRITICAL - 2022-04-04 23:50:12 --> Undefined property: App\Controllers\Identitas::$load
+#0 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 169, Array)
+#1 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(103): App\Controllers\Identitas->updatedenganfoto(Array)
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Identitas->proses()
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Identitas))
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-04 23:50:24 --> Undefined property: App\Controllers\Identitas::$load
+#0 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 169, Array)
+#1 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(103): App\Controllers\Identitas->updatedenganfoto(Array)
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Identitas->proses()
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Identitas))
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-04 23:52:07 --> Undefined property: App\Controllers\Identitas::$load
+#0 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 169, Array)
+#1 /opt/lampp/htdocs/elib/app/Controllers/Identitas.php(103): App\Controllers\Identitas->updatedenganfoto(Array)
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Identitas->proses()
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Identitas))
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-04 23:56:20 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::result()
+#0 /opt/lampp/htdocs/elib/system/View/View.php(210): include()
+#1 /opt/lampp/htdocs/elib/system/View/View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 /opt/lampp/htdocs/elib/system/Common.php(1089): CodeIgniter\View\View->render('backend/profile...', Array, true)
+#3 /opt/lampp/htdocs/elib/app/Controllers/Profile.php(40): view('backend/profile...')
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Profile->index()
+#5 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#6 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-04 23:59:34 --> Undefined property: App\Controllers\Gantipass::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Gantipass.php(48): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 48, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Gantipass->proses()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gantipass))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-04 23:59:38 --> Undefined property: App\Controllers\Gantipass::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Gantipass.php(48): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 48, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Gantipass->proses()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gantipass))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

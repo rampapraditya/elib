@@ -7,7 +7,7 @@
         getdata();
         
         tb_slider = $('#tb_slider').DataTable({
-            ajax: "<?php echo base_url(); ?>about/ajaxslider",
+            ajax: "<?php echo base_url(); ?>/about/ajaxslider",
             ordering: false
         });
         
@@ -30,7 +30,7 @@
             form_data.append('pesan', pesan);
             
             $.ajax({
-                url: "<?php echo base_url(); ?>about/proses",
+                url: "<?php echo base_url(); ?>/about/proses",
                 dataType: 'JSON',
                 cache: false,
                 contentType: false,
@@ -56,7 +56,7 @@
     
     function getdata(){
         $.ajax({
-            url: "<?php echo base_url(); ?>about/loaddata",
+            url: "<?php echo base_url(); ?>/about/loaddata",
             type: "POST",
             dataType: "JSON",
             success: function (data) {
@@ -84,7 +84,7 @@
         $('#modal_form').modal('show');
         $('.modal-title').text('Ganti slider');
         $.ajax({
-            url: "<?php echo base_url(); ?>about/showslider/" + id,
+            url: "<?php echo base_url(); ?>/about/showslider/" + id,
             type: "POST",
             dataType: "JSON",
             success: function (data) {
@@ -109,9 +109,9 @@
         
         var url = "";
         if (save_method === 'add') {
-            url = "<?php echo base_url(); ?>about/simpan_slider";
+            url = "<?php echo base_url(); ?>/about/simpan_slider";
         } else {
-            url = "<?php echo base_url(); ?>about/ganti_slider";
+            url = "<?php echo base_url(); ?>/about/ganti_slider";
         }
         $.ajax({
             url: url,
@@ -140,7 +140,7 @@
     function hapus(id, no) {
         if (confirm("Apakah anda yakin menghapus slider nomor " + no + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>about/hapusslider/" + id,
+                url: "<?php echo base_url(); ?>/about/hapusslider/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -183,7 +183,7 @@
                         <div class="carousel-inner" role="listbox">
                             <?php
                             $counter = 0;
-                            foreach ($slider->result() as $row) {
+                            foreach ($slider->getResult() as $row) {
                                 ?>
                             <div class="carousel-item <?php if($counter == 0){ echo 'active'; } ?>">
                                 <div class="view">

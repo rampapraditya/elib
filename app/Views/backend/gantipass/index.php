@@ -21,7 +21,7 @@
             form_data.append('baru', baru);
             
             $.ajax({
-                url: "<?php echo base_url(); ?>gantipass/proses",
+                url: "<?php echo base_url(); ?>/gantipass/proses",
                 dataType: 'JSON',
                 cache: false,
                 contentType: false,
