@@ -76,7 +76,7 @@ class Berita extends BaseController {
             $data['nama'] = $ses['nama'];
             $data['golongan'] = $ses['grup'];
             
-            $temp = $this->uri->segment(3);
+            $temp = $this->request->uri->getSegment(3);
             if(strlen($temp) > 0){
                 $kode = $this->modul->dekrip_url($temp);
                 $jml = $this->model->getAllQR("select count(*) as jml from blog where idblog = '".$kode."';")->jml;
@@ -88,10 +88,10 @@ class Berita extends BaseController {
                     $data['judul'] = $tersimpan->judul;
                     $data['berita'] = $tersimpan->konten;
 
-                    $this->load->view('backend/head', $data);
-                    $this->load->view('backend/menu');
-                    $this->load->view('backend/berita/detil');
-                    $this->load->view('backend/foot');
+                    echo view('backend/head', $data);
+                    echo view('backend/menu');
+                    echo view('backend/berita/detil');
+                    echo view('backend/foot');
                 }else{
                     $this->modul->halaman('berita');
                 }
@@ -101,10 +101,10 @@ class Berita extends BaseController {
                 $data['judul'] = "";
                 $data['berita'] = "";
                 
-                $this->load->view('backend/head', $data);
-                $this->load->view('backend/menu');
-                $this->load->view('backend/berita/detil');
-                $this->load->view('backend/foot');
+                echo view('backend/head', $data);
+                echo view('backend/menu');
+                echo view('backend/berita/detil');
+                echo view('backend/foot');
             }
         }else{
            $this->modul->halaman('login');
@@ -164,8 +164,8 @@ class Berita extends BaseController {
                 $data = array(
                     'idblog' => $this->model->autokode('B','idblog', 'blog', 2, 7),
                     'tanggal' => $this->modul->TanggalSekarang(),
-                    'judul' => $this->input->post('judul'),
-                    'konten' => $this->input->post('konten'),
+                    'judul' => $this->request->getVar('judul'),
+                    'konten' => $this->request->getVar('konten'),
                     'idusers' => $idusers,
                     'thumb' => $newpath
                 );
@@ -192,8 +192,8 @@ class Berita extends BaseController {
         $data = array(
             'idblog' => $this->model->autokode('B','idblog', 'blog', 2, 7),
             'tanggal' => $this->modul->TanggalSekarang(),
-            'judul' => $this->input->post('judul'),
-            'konten' => $this->input->post('konten'),
+            'judul' => $this->request->getVar('judul'),
+            'konten' => $this->request->getVar('konten'),
             'idusers' => $idusers
         );
         $simpan = $this->model->add("blog",$data);
@@ -226,12 +226,12 @@ class Berita extends BaseController {
             $resize_foto = $this->resizeImage($path, $newpath);
             if($resize_foto){
                 $data = array(
-                    'judul' => $this->input->post('judul'),
-                    'konten' => $this->input->post('konten'),
+                    'judul' => $this->request->getVar('judul'),
+                    'konten' => $this->request->getVar('konten'),
                     'idusers' => $idusers,
                     'thumb' => $newpath
                 );
-                $kond['idblog'] = $this->input->post('kode');
+                $kond['idblog'] = $this->request->getVar('kode');
                 $simpan = $this->model->update("blog",$data,$kond);
                 if($simpan == 1){
                     unlink($path);
@@ -253,11 +253,11 @@ class Berita extends BaseController {
         $idusers = $ses['idusers'];
         
         $data = array(
-            'judul' => $this->input->post('judul'),
-            'konten' => $this->input->post('konten'),
+            'judul' => $this->request->getVar('judul'),
+            'konten' => $this->request->getVar('konten'),
             'idusers' => $idusers
         );
-        $kond['idblog'] = $this->input->post('kode');
+        $kond['idblog'] = $this->request->getVar('kode');
         $simpan = $this->model->update("blog",$data,$kond);
         if($simpan == 1){
             $status = "Berita terupdate";
@@ -269,7 +269,7 @@ class Berita extends BaseController {
     
     public function hapus() {
         if($this->nativesession->get('logged_in')){
-            $idblog = $this->uri->segment(3);
+            $idblog = $this->request->uri->getSegment(3);
             
             $thumb = $this->model->getAllQR("select thumb from blog where idblog = '".$idblog."';")->thumb;
             if(strlen($thumb) > 0){

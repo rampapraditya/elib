@@ -27,7 +27,7 @@
             form_data.append('konten', ket);
             
             $.ajax({
-                url: "<?php echo base_url(); ?>berita/proses",
+                url: "<?php echo base_url(); ?>/berita/proses",
                 dataType: 'JSON',
                 cache: false,
                 contentType: false,
@@ -40,9 +40,9 @@
                     $('#btnSave').attr('disabled',false);
                     
                     if(response.status === "Berita tersimpan"){
-                        window.location.href = "<?php echo base_url(); ?>berita";
+                        window.location.href = "<?php echo base_url(); ?>/berita";
                     }else if(response.status === "Berita terupdate"){
-                        window.location.href = "<?php echo base_url(); ?>berita";
+                        window.location.href = "<?php echo base_url(); ?>/berita";
                     }
                     
                 },error: function (response) {
@@ -95,7 +95,7 @@
                                    relative_urls : false,
                                    remove_script_host : false,
                                    convert_urls : true,
-                                   external_plugins: {"filemanager": BASE_URL + "assets/filemanager/plugin.min.js"}
+                                   external_plugins: {"filemanager": BASE_URL + "/assets/filemanager/plugin.min.js"}
                                 });
                             </script>
                         </div>

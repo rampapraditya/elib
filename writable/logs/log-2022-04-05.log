@@ -25,3 +25,17 @@ CRITICAL - 2022-04-05 00:28:12 --> Undefined property: App\Controllers\Berita::$
 #3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2022-04-05 03:05:11 --> Undefined property: App\Controllers\Berita::$uri
+#0 /opt/lampp/htdocs/elib/app/Controllers/Berita.php(79): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 79, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Berita->detil()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Berita))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-05 03:24:32 --> Undefined property: App\Controllers\Berita::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Berita.php(123): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 123, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Berita->proses()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Berita))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
