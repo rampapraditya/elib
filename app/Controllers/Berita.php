@@ -48,8 +48,8 @@ class Berita extends BaseController {
                 $val = array();
                 $def = base_url().'/assets/img/noimg.jpg';
                 if(strlen($row->thumb) > 0){
-                    if(file_exists($row->thumb)){
-                        $def = base_url().substr($row->thumb, 1);
+                    if(file_exists(ROOTPATH.'public/uploads/'.$row->thumb)){
+                        $def = base_url().'/uploads/'.$row->thumb;
                     }
                 }
                 $val[] = '<img src="'.$def.'" style="width: 60px; height: auto;">';
@@ -113,20 +113,13 @@ class Berita extends BaseController {
     
     public function proses() {
         if($this->nativesession->get('logged_in')){
-            $config['upload_path'] = './assets/temp/';
-            $config['upload_newpath'] = './assets/img/';
-            $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_filename'] = '255';
-            $config['encrypt_name'] = TRUE;
-            $config['max_size'] = '3024'; //3 MB
-            
-            $mode = $this->input->post('mode');
+            $mode = $this->request->getVar('mode');
             if($mode == "TAMBAH"){
                 if (isset($_FILES['file']['name'])) {
                     if(0 < $_FILES['file']['error']) {
                         $status = "Error during file upload ".$_FILES['file']['error'];
                     }else{
-                        $status = $this->simpan_dengan_gambar($config);
+                        $status = $this->simpan_dengan_gambar();
                     }
                 }else{
                     $status = $this->simpan_tanpa_gambar();
@@ -136,7 +129,7 @@ class Berita extends BaseController {
                     if(0 < $_FILES['file']['error']) {
                         $status = "Error during file upload ".$_FILES['file']['error'];
                     }else{
-                        $status = $this->update_dengan_gambar($config);
+                        $status = $this->update_dengan_gambar();
                     }
                 }else{
                     $status = $this->update_tanpa_gambar();
@@ -148,40 +141,37 @@ class Berita extends BaseController {
         }
     }
     
-    private function simpan_dengan_gambar($config) {
+    private function simpan_dengan_gambar() {
         $ses = $this->nativesession->get('logged_in');
         $idusers = $ses['idusers'];
-            
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')) {
 
-            $datafile = $this->upload->data();
-            $path = $config['upload_path'].$datafile['file_name'];
-            $newpath = $config['upload_newpath'].$datafile['file_name'];
-
-            $resize_foto = $this->resizeImage($path, $newpath);
-            if($resize_foto){
+        $file = $this->request->getFile('file');
+        $info_file = $this->modul->info_file($file);
+        
+        if(file_exists(ROOTPATH.'public/uploads/'.$info_file['name'])){
+            $status = "Gunakan nama file lain";
+        }else{
+            $status_upload = $file->move(ROOTPATH.'public/uploads');
+            if($status_upload){
                 $data = array(
                     'idblog' => $this->model->autokode('B','idblog', 'blog', 2, 7),
                     'tanggal' => $this->modul->TanggalSekarang(),
                     'judul' => $this->request->getVar('judul'),
                     'konten' => $this->request->getVar('konten'),
                     'idusers' => $idusers,
-                    'thumb' => $newpath
+                    'thumb' => $info_file['name']
                 );
                 $simpan = $this->model->add("blog",$data);
                 if($simpan == 1){
-                    unlink($path);
                     $status = "Berita tersimpan";
                 }else{
                     $status = "Berita gagal tersimpan";
                 }
             }else{
-                $status = "Resize foto gagal";
+                $status = "File gagal terupload";
             }
-        } else {
-            $status = $this->upload->display_errors();
         }
+                
         return $status;
     }
     
@@ -205,46 +195,43 @@ class Berita extends BaseController {
         return $status;
     }
     
-    private function update_dengan_gambar($config) {
+    private function update_dengan_gambar() {
         $ses = $this->nativesession->get('logged_in');
         $idusers = $ses['idusers'];
         
-        $thumb = $this->model->getAllQR("select thumb from blog where idblog = '".$this->input->post('kode')."';")->thumb;
+        $thumb = $this->model->getAllQR("select thumb from blog where idblog = '".$this->request->getVar('kode')."';")->thumb;
         if(strlen($thumb) > 0){
-            if(file_exists($thumb)){
-                unlink($thumb);
+            if(file_exists(ROOTPATH.'public/uploads/'.$thumb)){
+                unlink(ROOTPATH.'public/uploads/'.$thumb);
             }
         }
-            
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')) {
-
-            $datafile = $this->upload->data();
-            $path = $config['upload_path'].$datafile['file_name'];
-            $newpath = $config['upload_newpath'].$datafile['file_name'];
-
-            $resize_foto = $this->resizeImage($path, $newpath);
-            if($resize_foto){
+        
+        $file = $this->request->getFile('file');
+        $info_file = $this->modul->info_file($file);
+        
+        if(file_exists(ROOTPATH.'public/uploads/'.$info_file['name'])){
+            $status = "Gunakan nama file lain";
+        }else{
+            $status_upload = $file->move(ROOTPATH.'public/uploads');
+            if($status_upload){
                 $data = array(
                     'judul' => $this->request->getVar('judul'),
                     'konten' => $this->request->getVar('konten'),
                     'idusers' => $idusers,
-                    'thumb' => $newpath
+                    'thumb' => $info_file['name']
                 );
                 $kond['idblog'] = $this->request->getVar('kode');
                 $simpan = $this->model->update("blog",$data,$kond);
                 if($simpan == 1){
-                    unlink($path);
                     $status = "Berita terupdate";
                 }else{
                     $status = "Berita gagal terupdate";
                 }
             }else{
-                $status = "Resize foto gagal";
+                $status = "File gagal terupload";
             }
-        } else {
-            $status = $this->upload->display_errors();
         }
+                
         return $status;
     }
     
@@ -273,8 +260,8 @@ class Berita extends BaseController {
             
             $thumb = $this->model->getAllQR("select thumb from blog where idblog = '".$idblog."';")->thumb;
             if(strlen($thumb) > 0){
-                if(file_exists($thumb)){
-                    unlink($thumb);
+                if(file_exists(ROOTPATH.'public/uploads/'.$thumb)){
+                    unlink(ROOTPATH.'public/uploads/'.$thumb);
                 }
             }
             

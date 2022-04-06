@@ -59,3 +59,65 @@ CRITICAL - 2022-04-06 03:07:28 --> Call to undefined method App\Models\Mcustom::
 #2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #3 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
 #4 {main}
+CRITICAL - 2022-04-06 03:28:29 --> Undefined property: App\Controllers\Berita::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Berita.php(202): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 202, Array)
+#1 /opt/lampp/htdocs/elib/app/Controllers/Berita.php(132): App\Controllers\Berita->update_dengan_gambar()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Berita->proses()
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Berita))
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-06 04:05:27 --> Class 'App\Controllers\Mcustom' not found
+#0 /opt/lampp/htdocs/elib/system/CodeIgniter.php(809): App\Controllers\Korps->__construct()
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-06 04:06:58 --> Undefined property: App\Controllers\Korps::$Mglobals
+#0 /opt/lampp/htdocs/elib/app/Controllers/Korps.php(46): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 46, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Korps->ajaxlist()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Korps))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-06 04:07:11 --> Undefined property: App\Controllers\Korps::$Mglobals
+#0 /opt/lampp/htdocs/elib/app/Controllers/Korps.php(46): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 46, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Korps->ajaxlist()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Korps))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-06 04:09:01 --> Undefined property: App\Controllers\Korps::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Korps.php(67): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 67, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Korps->ajax_add()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Korps))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-06 04:09:50 --> Undefined property: App\Controllers\Korps::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Korps.php(96): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 96, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Korps->ajax_edit()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Korps))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-06 04:09:52 --> Undefined property: App\Controllers\Korps::$input
+#0 /opt/lampp/htdocs/elib/app/Controllers/Korps.php(96): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 96, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Korps->ajax_edit()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Korps))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-06 04:17:29 --> Undefined property: App\Controllers\Pangkat::$Mglobals
+#0 /opt/lampp/htdocs/elib/app/Controllers/Pangkat.php(46): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/opt/lampp/htdo...', 46, Array)
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Pangkat->ajaxlist()
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pangkat))
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-06 04:17:45 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::result()
+#0 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Pangkat->ajaxlist()
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pangkat))
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}

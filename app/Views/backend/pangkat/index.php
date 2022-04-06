@@ -5,13 +5,13 @@
 
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>pangkat/ajaxlist",
+            ajax: "<?php echo base_url(); ?>/pangkat/ajaxlist",
             ordering: false
         });
     });
 
     function reload() {
-        table.ajax.reload(null, false); //reload datatable ajax
+        table.ajax.reload(null, false);
     }
 
     function add() {
@@ -31,9 +31,9 @@
 
             var url = "";
             if (save_method === 'add') {
-                url = "<?php echo base_url(); ?>pangkat/ajax_add";
+                url = "<?php echo base_url(); ?>/pangkat/ajax_add";
             } else {
-                url = "<?php echo base_url(); ?>pangkat/ajax_edit";
+                url = "<?php echo base_url(); ?>/pangkat/ajax_edit";
             }
             // ajax adding data to database
             $.ajax({
@@ -61,7 +61,7 @@
     function hapus(id, nama) {
         if (confirm("Apakah anda yakin menghapus pangkat " + nama + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>pangkat/hapus/" + id,
+                url: "<?php echo base_url(); ?>/pangkat/hapus/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -80,7 +80,7 @@
         $('#modal_form').modal('show');
         $('.modal-title').text('Ganti pangkat');
         $.ajax({
-            url: "<?php echo base_url(); ?>pangkat/ganti/" + id,
+            url: "<?php echo base_url(); ?>/pangkat/ganti/" + id,
             type: "POST",
             dataType: "JSON",
             success: function (data) {

@@ -5,7 +5,7 @@
 
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>korps/ajaxlist",
+            ajax: "<?php echo base_url(); ?>/korps/ajaxlist",
             ordering: false
         });
     });
@@ -31,9 +31,9 @@
 
             var url = "";
             if (save_method === 'add') {
-                url = "<?php echo base_url(); ?>korps/ajax_add";
+                url = "<?php echo base_url(); ?>/korps/ajax_add";
             } else {
-                url = "<?php echo base_url(); ?>korps/ajax_edit";
+                url = "<?php echo base_url(); ?>/korps/ajax_edit";
             }
             // ajax adding data to database
             $.ajax({
@@ -61,7 +61,7 @@
     function hapus(id, nama) {
         if (confirm("Apakah anda yakin menghapus korps " + nama + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>korps/hapus/" + id,
+                url: "<?php echo base_url(); ?>/korps/hapus/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -80,7 +80,7 @@
         $('#modal_form').modal('show');
         $('.modal-title').text('Ganti korps');
         $.ajax({
-            url: "<?php echo base_url(); ?>korps/ganti/" + id,
+            url: "<?php echo base_url(); ?>/korps/ganti/" + id,
             type: "POST",
             dataType: "JSON",
             success: function (data) {

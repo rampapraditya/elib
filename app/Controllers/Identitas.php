@@ -5,14 +5,13 @@ namespace App\Controllers;
 use App\Models\Mcustom;
 use App\Libraries\Modul;
 use App\Libraries\Nativesession;
-use CodeIgniter\Controller;
 
 /**
  * Description of Identitas
  *
  * @author RAMPA
  */
-class Identitas extends Controller{
+class Identitas extends BaseController{
     
     private $model;
     private $modul;

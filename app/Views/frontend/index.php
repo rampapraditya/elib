@@ -263,8 +263,8 @@ $model = new Mcustom();
                                     <?php
                                     $def = base_url().'/assets/img/noimg.jpg';
                                     if(strlen($row->thumb) > 0){
-                                        if(file_exists($row->thumb)){
-                                            $def = base_url().substr($row->thumb, 1);
+                                        if(file_exists(ROOTPATH.'public/uploads/'.$row->thumb)){
+                                            $def = base_url().'/uploads/'.$row->thumb;
                                         }
                                     }
                                     ?>
