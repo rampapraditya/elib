@@ -15,7 +15,7 @@ class Modul {
 
     public function pesan_halaman($pesan, $halaman) {
         $string_pesan = "<script type='text/javascript'> alert('" . $pesan . "');";
-        $string_pesan .= "window.location = '" . base_url() . $halaman . "';</script>";
+        $string_pesan .= "window.location = '" . base_url() .'/'. $halaman . "';</script>";
         echo $string_pesan;
     }
 
@@ -26,7 +26,7 @@ class Modul {
 
     public function halaman($halaman) {
         $string_pesan = "<script type='text/javascript'> ";
-        $string_pesan .= "window.location = '" . base_url() . $halaman . "';</script>";
+        $string_pesan .= "window.location = '" . base_url() .'/'. $halaman . "';</script>";
         echo $string_pesan;
     }
 
