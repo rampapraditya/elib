@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp64/www/elib/app/Views/frontend/singlepenelitian.php</file>
-            <file>file:/D:/wamp64/www/elib/app/Views/frontend/index.php</file>
-            <file>file:/D:/wamp64/www/elib/app/Views/frontend/blogsingle.php</file>
-            <file>file:/D:/wamp64/www/elib/app/Views/frontend/listpenelitian.php</file>
-            <file>file:/D:/wamp64/www/elib/app/Controllers/Listpenelitian.php</file>
+            <file>file:/opt/lampp/htdocs/elib/app/Controllers/Berita.php</file>
+            <file>file:/opt/lampp/htdocs/elib/LICENSE</file>
+            <file>file:/opt/lampp/htdocs/elib/app/Views/backend/berita/index.php</file>
+            <file>file:/opt/lampp/htdocs/elib/app/Views/backend/berita/detil.php</file>
         </group>
     </open-files>
 </project-private>
