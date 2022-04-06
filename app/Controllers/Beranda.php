@@ -38,8 +38,8 @@ class Beranda extends BaseController {
                 $data['fax'] = $tersimpan->fax;
                 $data['website'] = $tersimpan->website;
                 $deflogo = base_url().'/assets/img/no_image.png';
-                if(strlen(WRITEPATH.$tersimpan->logo) > 0){
-                    if(file_exists(WRITEPATH.$tersimpan->logo)){
+                if(strlen($tersimpan->logo) > 0){
+                    if(file_exists(ROOTPATH.$tersimpan->logo)){
                         $deflogo = base_url().'/'.$tersimpan->logo;
                     }
                 }
