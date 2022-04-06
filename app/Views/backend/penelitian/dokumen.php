@@ -4,7 +4,7 @@
     
     $(document).ready(function() {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>penelitian/ajaxdokumen/<?php echo $kode; ?>",
+            ajax: "<?php echo base_url(); ?>/penelitian/ajaxdokumen/<?php echo $kode; ?>",
             ordering: false
         });
     });
@@ -33,7 +33,7 @@
         form_data.append('file', dokumen);
 
         $.ajax({
-            url: "<?php echo base_url(); ?>penelitian/proses_dokumen",
+            url: "<?php echo base_url(); ?>/penelitian/proses_dokumen",
             dataType: 'JSON',
             cache: false,
             contentType: false,
@@ -64,7 +64,7 @@
     function hapus(id, judul) {
         if (confirm("Apakah anda yakin menghapus dokumen penelitian " + judul + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>penelitian/hapusdokumen/" + id,
+                url: "<?php echo base_url(); ?>/penelitian/hapusdokumen/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -78,7 +78,7 @@
     }
     
     function unduh(kode){
-        window.location.href = "<?php echo base_url(); ?>penelitian/unduhfile/"+kode;
+        window.location.href = "<?php echo base_url(); ?>/penelitian/unduhfile/"+kode;
     }
     
 </script>

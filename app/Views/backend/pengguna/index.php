@@ -5,7 +5,7 @@
 
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>siswa/ajaxlist",
+            ajax: "<?php echo base_url(); ?>/siswa/ajaxlist",
             ordering: false
         });
     });
@@ -48,9 +48,9 @@
 
             var url = "";
             if (save_method === 'add') {
-                url = "<?php echo base_url(); ?>siswa/ajax_add";
+                url = "<?php echo base_url(); ?>/siswa/ajax_add";
             } else {
-                url = "<?php echo base_url(); ?>siswa/ajax_edit";
+                url = "<?php echo base_url(); ?>/siswa/ajax_edit";
             }
             
             var form_data = new FormData();
@@ -92,7 +92,7 @@
     function hapus(id, nama) {
         if (confirm("Apakah anda yakin menghapus peneliti " + nama + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>siswa/hapus/" + id,
+                url: "<?php echo base_url(); ?>/siswa/hapus/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -112,7 +112,7 @@
         $('.modal-title').text('Ganti peneliti');
         $('[name="nrp"]').attr("readonly", true);
         $.ajax({
-            url: "<?php echo base_url(); ?>siswa/ganti/" + id,
+            url: "<?php echo base_url(); ?>/siswa/ganti/" + id,
             type: "POST",
             dataType: "JSON",
             success: function (data) {
@@ -200,7 +200,7 @@
                         <select id="korps" name="korps" class="form-control">
                             <option value="-">- Pilih Korps -</option>
                             <?php
-                            foreach ($korps->result() as $row) {
+                            foreach ($korps->getResult() as $row) {
                                 ?>
                             <option value="<?php echo $row->idkorps; ?>"><?php echo $row->nama_korps; ?></option>
                                 <?php
@@ -213,7 +213,7 @@
                         <select id="pangkat" name="pangkat" class="form-control">
                             <option value="-">- Pilih Pangkat -</option>
                             <?php
-                            foreach ($pangkat->result() as $row) {
+                            foreach ($pangkat->getResult() as $row) {
                                 ?>
                             <option value="<?php echo $row->idpangkat; ?>"><?php echo $row->nama_pangkat; ?></option>
                                 <?php

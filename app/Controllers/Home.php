@@ -16,11 +16,9 @@ class Home extends BaseController
     }
     
     public function index() {
-        $model = new Mcustom();
-        
         $jml_identitas = $this->model->select_count("identitas", "kode");
         if($jml_identitas > 0){
-            $tersimpan_iden = $model->getAllQR("SELECT logo, alamat, email, tlp FROM identitas;");
+            $tersimpan_iden = $this->model->getAllQR("SELECT logo, alamat, email, tlp FROM identitas;");
             $logo = base_url().'assets/images/no_image.png';
             if(strlen($tersimpan_iden->logo) > 0){
                 if(file_exists(ROOTPATH.'public/uploads/'.$tersimpan_iden->logo)){
@@ -51,9 +49,9 @@ class Home extends BaseController
         $data['slider'] = $this->model->getAll("slider_tentang");
         
         // media sosial
-        $jml = $model->select_count("medsos", "idmedsos");
+        $jml = $this->model->select_count("medsos", "idmedsos");
         if($jml > 0){
-            $tersimpan_med = $model->getAllQR("select * from medsos");
+            $tersimpan_med = $this->model->getAllQR("select * from medsos");
             $data['tw'] = $tersimpan_med->tw;
             $data['ig'] = $tersimpan_med->ig;
             $data['fb'] = $tersimpan_med->fb;

@@ -3,7 +3,7 @@
     var table;
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>penelitian/ajaxlist",
+            ajax: "<?php echo base_url(); ?>/penelitian/ajaxlist",
             ordering: false
         });
     });
@@ -13,21 +13,21 @@
     }
 
     function add() {
-        window.location.href = "<?php echo base_url(); ?>penelitian/detil";
+        window.location.href = "<?php echo base_url(); ?>/penelitian/detil";
     }
     
     function ganti(id) {
-        window.location.href = "<?php echo base_url(); ?>penelitian/detil/" + id;
+        window.location.href = "<?php echo base_url(); ?>/penelitian/detil/" + id;
     }
     
     function doc(id){
-        window.location.href = "<?php echo base_url(); ?>penelitian/dokumen/" + id;
+        window.location.href = "<?php echo base_url(); ?>/penelitian/dokumen/" + id;
     }
 
     function hapus(id, judul, nama) {
         if (confirm("Apakah anda yakin menghapus penelitian " + judul + " oleh " + nama + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>penelitian/hapus/" + id,
+                url: "<?php echo base_url(); ?>/penelitian/hapus/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {

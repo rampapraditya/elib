@@ -222,8 +222,8 @@ $model = new Mcustom();
                         foreach ($penelitian->getResult() as $row) {
                             $def = base_url().'/assets/img/noimg.jpg';
                             if(strlen($row->thumbnail) > 0){
-                                if(file_exists($row->thumbnail)){
-                                    $def = base_url().substr($row->thumbnail, 1);
+                                if(file_exists(ROOTPATH.'public/uploads/'.$row->thumbnail)){
+                                    $def = base_url().'/uploads/'.$row->thumbnail;
                                 }
                             }
                             ?>
@@ -234,7 +234,7 @@ $model = new Mcustom();
                                     <h4><?php echo $row->judul; ?></h4>
                                     <p></p>
                                     <div class="portfolio-links">
-                                        <a href="<?php echo base_url(); ?>singlepenelitian/index/<?php echo $modul->enkrip_url($row->idpenelitian); ?>" title="More Details"><i class="bi bi-link"></i></a>
+                                        <a href="<?php echo base_url(); ?>/singlepenelitian/index/<?php echo $modul->enkrip_url($row->idpenelitian); ?>" title="More Details"><i class="bi bi-link"></i></a>
                                     </div>
                                 </div>
                             </div>

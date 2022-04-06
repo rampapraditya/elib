@@ -31,10 +31,10 @@ class Singlepenelitian extends BaseController {
         $jml_identitas = $this->model->getAllQR("SELECT count(*) as jml FROM identitas;")->jml;
         if($jml_identitas > 0){
             $tersimpan_iden = $this->model->getAllQR("SELECT logo, alamat, email, tlp FROM identitas;");
-            $logo = base_url().'/assets/images/no_image.png';
+            $logo = base_url().'/assets/img/noimg.jpg';
             if(strlen($tersimpan_iden->logo) > 0){
-                if(file_exists($tersimpan_iden->logo)){
-                    $logo = base_url().substr($tersimpan_iden->logo, 1);
+                if(file_exists(ROOTPATH.'public/uploads/'.$tersimpan_iden->logo)){
+                    $logo = base_url().'/uploads/'.$tersimpan_iden->logo;
                 }
             }
             $data['logo'] = $logo;
@@ -43,7 +43,7 @@ class Singlepenelitian extends BaseController {
             $data['email'] = $tersimpan_iden->email;
             
         }else{
-            $data['logo'] = base_url().'assets/images/no_image.png';
+            $data['logo'] = base_url().'/assets/img/noimg.jpg';
             $data['alamat'] = '';
             $data['tlp'] = '';
             $data['email'] = '';
@@ -82,8 +82,8 @@ class Singlepenelitian extends BaseController {
                 $penelitian = $this->model->getAllQR("select a.*, date_format(a.tanggal, '%d %M %Y') as tgl, time(tanggal) as wkt, b.nama_kategori from penelitian a, kategori_penelitian b where a.idkategori = b.idkategori and a.idpenelitian = '".$kode."';");
                 $defthumb = base_url().'/assets/img/noimg.jpg';
                 if(strlen($penelitian->thumbnail) > 0){
-                    if(file_exists($penelitian->thumbnail)){
-                        $defthumb = base_url().substr($penelitian->thumbnail, 1);
+                    if(file_exists(ROOTPATH.'public/uploads/'.$penelitian->thumbnail)){
+                        $defthumb = base_url().'/uploads/'.$penelitian->thumbnail;
                     }
                 }
                 
@@ -160,7 +160,7 @@ class Singlepenelitian extends BaseController {
             $idusers = $ses['idusers'];
             
             $this->load->helper('download');
-            $kode = $this->uri->segment(3);
+            $kode = $this->request->uri->getSegment(3);
             
             // mencari kode penelitian dari iddokumen
             $idpenelitian = $this->model->getAllQR("SELECT idpenelitian FROM dokumen where iddokumen = '".$kode."';")->idpenelitian;

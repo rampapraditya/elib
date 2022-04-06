@@ -69,7 +69,7 @@ $model = new Mcustom();
             <section class="breadcrumbs">
                 <div class="container">
                     <ol style="margin-top: 12px;">
-                        <li><a href="<?php echo base_url(); ?>welcome">Home</a></li>
+                        <li><a href="<?php echo base_url(); ?>/home">Home</a></li>
                         <li>Penelitian</li>
                     </ol>
                 </div>
@@ -159,11 +159,11 @@ $model = new Mcustom();
                                         foreach ($dokumen->getResult() as $row) {
                                             if($rahasia == "ya"){
                                                 ?>
-                                        <li><a onclick="unduh('<?php echo $kode; ?>','<?php echo base_url(); ?>singlepenelitian/unduhfile/<?php echo $row->iddokumen; ?>')" style="color: blue;" href="javascript:void(0)"><?php echo $row->judul_dok; ?></a></li>
+                                        <li><a onclick="unduh('<?php echo $kode; ?>','<?php echo base_url(); ?>/singlepenelitian/unduhfile/<?php echo $row->iddokumen; ?>')" style="color: blue;" href="javascript:void(0)"><?php echo $row->judul_dok; ?></a></li>
                                                 <?php
                                             }else if($rahasia == "tidak"){
                                                 ?>
-                                        <li><a style="color: blue;" href="<?php echo base_url(); ?>singlepenelitian/unduhfile/<?php echo $row->iddokumen; ?>"><?php echo $row->judul_dok; ?></a></li>
+                                        <li><a style="color: blue;" href="<?php echo base_url(); ?>/singlepenelitian/unduhfile/<?php echo $row->iddokumen; ?>"><?php echo $row->judul_dok; ?></a></li>
                                                 <?php
                                             }
                                         }
@@ -177,14 +177,14 @@ $model = new Mcustom();
                                     foreach ($lainnya->getResult() as $row) {
                                         $defthumb = base_url().'/assets/img/noimg.jpg';
                                         if(strlen($row->thumbnail) > 0){
-                                            if(file_exists($row->thumbnail)){
-                                                $defthumb = base_url().substr($row->thumbnail, 1);
+                                            if(file_exists(ROOTPATH.'public/uploads/'.$row->thumbnail)){
+                                                $defthumb = base_url().'/uploads/'.$row->thumbnail;
                                             }
                                         }
                                         ?>
                                     <div class="post-item clearfix">
                                         <img src="<?php echo $defthumb; ?>" alt="">
-                                        <h4><a href="<?php echo base_url(); ?>singlepenelitian/index/<?php echo $this->modul->enkrip_url($row->idpenelitian); ?>"><?php echo $row->judul; ?></a></h4>
+                                        <h4><a href="<?php echo base_url(); ?>/singlepenelitian/index/<?php echo $this->modul->enkrip_url($row->idpenelitian); ?>"><?php echo $row->judul; ?></a></h4>
                                         <time><?php echo $row->tgl; ?></time>
                                     </div>
                                         <?php

@@ -85,7 +85,7 @@
                             if (data.status === "ok") {
                                 window.location.href = "<?php echo base_url(); ?>/beranda";
                             }else if(data.status === "ok_siswa"){
-                                window.location.href = "<?php echo base_url(); ?>/welcome";
+                                window.location.href = "<?php echo base_url(); ?>/home";
                             } else {
                                 alert(data.status);
                             }

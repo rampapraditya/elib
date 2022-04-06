@@ -45,7 +45,7 @@
             form_data.append('penerbit', penerbit);
             
             $.ajax({
-                url: "<?php echo base_url(); ?>penelitian/proses",
+                url: "<?php echo base_url(); ?>/penelitian/proses",
                 dataType: 'JSON',
                 cache: false,
                 contentType: false,
@@ -58,9 +58,9 @@
                     $('#btnSave').attr('disabled',false);
                     
                     if(response.status === "Data tersimpan"){
-                        window.location.href = "<?php echo base_url(); ?>penelitian";
+                        window.location.href = "<?php echo base_url(); ?>/penelitian";
                     }else if(response.status === "Data terupdate"){
-                        window.location.href = "<?php echo base_url(); ?>penelitian";
+                        window.location.href = "<?php echo base_url(); ?>/penelitian";
                     }
                     
                 },error: function (response) {
@@ -82,7 +82,7 @@
         var kode = document.getElementById('kode').value;
         
         $.ajax({
-            url: "<?php echo base_url(); ?>penelitian/getsubkat/" + idkat + "/" + kode,
+            url: "<?php echo base_url(); ?>/penelitian/getsubkat/" + idkat + "/" + kode,
             type: "POST",
             dataType: "JSON",
             success: function (data) {
@@ -103,17 +103,6 @@
                     <h4 class="card-title">MATERI</h4>
                     <div class="forms-sample">
                         <input type="hidden" id="kode" name="kode" value="<?php echo $kode; ?>">
-                        <!--
-                        <div class="form-group">
-                            <label>PENULIS</label>
-                            <div class="input-group">
-                                <input type="hidden" id="idsiswa" name="idsiswa" value="<?php //echo $idsiswa; ?>">
-                                <input type="text" class="form-control" id="personil" name="personil" readonly autocomplete="off" value="<?php echo $nama_siswa; ?>">
-                                <div class="input-group-append">
-                                    <button style="margin-left: 3px;" class="btn btn-sm btn-outline-secondary" type="button" onclick="showsiswa();">...</button>
-                                </div>
-                            </div>
-                        </div>-->
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
@@ -157,7 +146,7 @@
                                     <select id="kategori" name="kategori" class="form-control" onchange="pilihsubkat();">
                                         <option value="-">- PILIH KATEGORI -</option>
                                         <?php
-                                        foreach ($kategori->result() as $row) {
+                                        foreach ($kategori->getResult() as $row) {
                                             ?>
                                         <option <?php if($row->idkategori == $idkategori){ echo 'selected'; } ?> value="<?php echo $row->idkategori; ?>"><?php echo $row->nama_kategori; ?></option>
                                             <?php
@@ -205,12 +194,12 @@
                                    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
                                    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
                                    image_advtab: true ,
-                                   external_filemanager_path: BASE_URL + "assets/filemanager/",
+                                   external_filemanager_path: BASE_URL + "/assets/filemanager/",
                                    filemanager_title: "Media Gallery",
                                    relative_urls : false,
                                    remove_script_host : false,
                                    convert_urls : true,
-                                   external_plugins: {"filemanager": BASE_URL + "assets/filemanager/plugin.min.js"}
+                                   external_plugins: {"filemanager": BASE_URL + "/assets/filemanager/plugin.min.js"}
                                 });
                             </script>
                         </div>

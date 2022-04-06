@@ -75,7 +75,7 @@ class Kategori extends BaseController {
         if($this->nativesession->get('logged_in')){
             $data = array(
                 'idkategori' => $this->model->autokode("K","idkategori","kategori_penelitian", 2, 7),
-                'nama_kategori' => $this->input->post('nama')
+                'nama_kategori' => $this->request->getVar('nama')
             );
             $simpan = $this->model->add("kategori_penelitian",$data);
             if($simpan == 1){
@@ -91,7 +91,7 @@ class Kategori extends BaseController {
     
     public function ganti(){
         if($this->nativesession->get('logged_in')){
-            $kondisi['idkategori'] = $this->uri->segment(3);
+            $kondisi['idkategori'] = $this->request->uri->getSegment(3);
             $data = $this->model->get_by_id("kategori_penelitian", $kondisi);
             echo json_encode($data);
         }else{
@@ -102,9 +102,9 @@ class Kategori extends BaseController {
     public function ajax_edit() {
         if($this->nativesession->get('logged_in')){
             $data = array(
-                'nama_kategori' => $this->input->post('nama')
+                'nama_kategori' => $this->request->getVar('nama')
             );
-            $kond['idkategori'] = $this->input->post('kode');
+            $kond['idkategori'] = $this->request->getVar('kode');
             $update = $this->model->update("kategori_penelitian",$data, $kond);
             if($update == 1){
                 $status = "Data terupdate";
@@ -119,7 +119,7 @@ class Kategori extends BaseController {
     
     public function hapus() {
         if($this->nativesession->get('logged_in')){
-            $kondisi['idkategori'] = $this->uri->segment(3);
+            $kondisi['idkategori'] = $this->request->uri->getSegment(3);
             $hapus = $this->model->delete("kategori_penelitian",$kondisi);
             if($hapus == 1){
                 $status = "Data terhapus";
@@ -140,16 +140,16 @@ class Kategori extends BaseController {
             $data['nama'] = $ses['nama'];
             $data['golongan'] = $ses['grup'];
             
-            $idkat = $this->modul->dekrip_url($this->uri->segment(3));
+            $idkat = $this->modul->dekrip_url($this->request->uri->getSegment(3));
             $jml = $this->model->getAllQR("select count(*) as jml from kategori_penelitian where idkategori = '".$idkat."';")->jml;
             if($jml > 0){
                 $data['idkat'] = $idkat;
                 $data['namakat'] = $this->model->getAllQR("select nama_kategori from kategori_penelitian where idkategori = '".$idkat."';")->nama_kategori;
                 
-                $this->load->view('backend/head', $data);
-                $this->load->view('backend/menu');
-                $this->load->view('backend/kategori_penelitian/detil');
-                $this->load->view('backend/foot');
+                echo view('backend/head', $data);
+                echo view('backend/menu');
+                echo view('backend/kategori_penelitian/detil');
+                echo view('backend/foot');
             }else{
                 $this->modul->halaman('kategori');
             }
@@ -160,11 +160,11 @@ class Kategori extends BaseController {
     
     public function ajaxdetil() {
         if($this->nativesession->get('logged_in')){
-            $idkat = $this->uri->segment(3);
+            $idkat = $this->request->uri->getSegment(3);
             // load data
             $data = array();
             $list = $this->model->getAllQ("SELECT * FROM kategori_penelitian_sub where idkategori = '".$idkat."';");
-            foreach ($list->result() as $row) {
+            foreach ($list->getResult() as $row) {
                 $val = array();
                 $val[] = $row->nama_sub_kat;
                 $val[] = '<div style="text-align: center;">'
@@ -184,8 +184,8 @@ class Kategori extends BaseController {
         if($this->nativesession->get('logged_in')){
             $data = array(
                 'idkat_p_sub' => $this->model->autokode("S","idkat_p_sub","kategori_penelitian_sub", 2, 7),
-                'nama_sub_kat' => $this->input->post('nama'),
-                'idkategori' => $this->input->post('idkat')
+                'nama_sub_kat' => $this->request->getVar('nama'),
+                'idkategori' => $this->request->getVar('idkat')
             );
             $simpan = $this->model->add("kategori_penelitian_sub",$data);
             if($simpan == 1){
@@ -202,9 +202,9 @@ class Kategori extends BaseController {
     public function ajax_edit_sub() {
         if($this->nativesession->get('logged_in')){
             $data = array(
-                'nama_sub_kat' => $this->input->post('nama')
+                'nama_sub_kat' => $this->request->getVar('nama')
             );
-            $kond['idkat_p_sub'] = $this->input->post('kode');
+            $kond['idkat_p_sub'] = $this->request->getVar('kode');
             $update = $this->model->update("kategori_penelitian_sub",$data, $kond);
             if($update == 1){
                 $status = "Data terupdate";
@@ -219,7 +219,7 @@ class Kategori extends BaseController {
     
     public function gantisub(){
         if($this->nativesession->get('logged_in')){
-            $kondisi['idkat_p_sub'] = $this->uri->segment(3);
+            $kondisi['idkat_p_sub'] = $this->request->uri->getSegment(3);
             $data = $this->model->get_by_id("kategori_penelitian_sub", $kondisi);
             echo json_encode($data);
         }else{
@@ -230,7 +230,7 @@ class Kategori extends BaseController {
     
     public function subhapus() {
         if($this->nativesession->get('logged_in')){
-            $kondisi['idkat_p_sub'] = $this->uri->segment(3);
+            $kondisi['idkat_p_sub'] = $this->request->uri->getSegment(3);
             $hapus = $this->model->delete("kategori_penelitian_sub",$kondisi);
             if($hapus == 1){
                 $status = "Data terhapus";

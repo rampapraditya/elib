@@ -5,7 +5,7 @@
 
     $(document).ready(function () {
         table = $('#tb').DataTable({
-            ajax: "<?php echo base_url(); ?>kategori/ajaxdetil/<?php echo $idkat; ?>",
+            ajax: "<?php echo base_url(); ?>/kategori/ajaxdetil/<?php echo $idkat; ?>",
             ordering: false
         });
     });
@@ -31,9 +31,9 @@
 
             var url = "";
             if (save_method === 'add') {
-                url = "<?php echo base_url(); ?>kategori/ajax_add_sub";
+                url = "<?php echo base_url(); ?>/kategori/ajax_add_sub";
             } else {
-                url = "<?php echo base_url(); ?>kategori/ajax_edit_sub";
+                url = "<?php echo base_url(); ?>/kategori/ajax_edit_sub";
             }
             // ajax adding data to database
             $.ajax({
@@ -61,7 +61,7 @@
     function hapus(id, nama) {
         if (confirm("Apakah anda yakin menghapus sub kategori penelitian " + nama + " ?")) {
             $.ajax({
-                url: "<?php echo base_url(); ?>kategori/subhapus/" + id,
+                url: "<?php echo base_url(); ?>/kategori/subhapus/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
@@ -80,7 +80,7 @@
         $('#modal_form').modal('show');
         $('.modal-title').text('Ganti sub-kategori penelitian');
         $.ajax({
-            url: "<?php echo base_url(); ?>kategori/gantisub/" + id,
+            url: "<?php echo base_url(); ?>/kategori/gantisub/" + id,
             type: "POST",
             dataType: "JSON",
             success: function (data) {
