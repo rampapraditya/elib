@@ -155,8 +155,8 @@ class Identitas extends Controller{
     private function updatedenganfoto() {
         $logo = $this->model->getAllQR("SELECT logo FROM identitas;")->logo;
         if(strlen($logo) > 0){
-            if(file_exists(WRITEPATH.$logo)){
-                unlink(WRITEPATH.$logo); 
+            if(file_exists(ROOTPATH.'public/uploads/'.$logo)){
+                unlink(ROOTPATH.'public/uploads/'.$logo); 
             }
         }
         
@@ -164,10 +164,10 @@ class Identitas extends Controller{
         $info_file = $this->modul->info_file($file);
         
         // cek nama file ada apa tidak
-        if(file_exists(WRITEPATH.'uploads/'.$info_file['name'])){
+        if(file_exists(ROOTPATH.'public/uploads/'.$info_file['name'])){
             $status = "Gunakan nama file lain";
         }else{
-            $status_upload = $file->move(WRITEPATH.'uploads');
+            $status_upload = $file->move(ROOTPATH.'public/uploads');
             if($status_upload){
                 $data = array(
                     'instansi' => $this->request->getVar('nama'),
@@ -182,7 +182,7 @@ class Identitas extends Controller{
                     'website' => $this->request->getVar('web'),
                     'lat' => $this->request->getVar('lat'),
                     'lon' => $this->request->getVar('lon'),
-                    'logo' => 'uploads/'.$info_file['name']
+                    'logo' => $info_file['name']
                 );
                 $update = $this->model->updateNK("identitas",$data);
                 if($update == 1){

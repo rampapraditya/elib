@@ -37,10 +37,10 @@ class Beranda extends BaseController {
                 $data['tlp'] = $tersimpan->tlp;
                 $data['fax'] = $tersimpan->fax;
                 $data['website'] = $tersimpan->website;
-                $deflogo = base_url().'/assets/img/no_image.png';
+                $deflogo = base_url().'/assets/img/noimg.jpg';
                 if(strlen($tersimpan->logo) > 0){
-                    if(file_exists(ROOTPATH.$tersimpan->logo)){
-                        $deflogo = base_url().'/'.$tersimpan->logo;
+                    if(file_exists(ROOTPATH.'public/uploads/'.$tersimpan->logo)){
+                        $deflogo = base_url().'/uploads/'.$tersimpan->logo;
                     }
                 }
                 $data['logo'] = $deflogo;
@@ -50,10 +50,9 @@ class Beranda extends BaseController {
                 $data['tlp'] = "";
                 $data['fax'] = "";
                 $data['website'] = "";
-                $data['logo'] = base_url().'/assets/img/no_image.png';
+                $data['logo'] = base_url().'/assets/img/noimg.jpg';
             }
             
-            echo $deflogo = base_url().'/'.$tersimpan->logo;
             
             echo view('backend/head', $data);
             echo view('backend/menu');
