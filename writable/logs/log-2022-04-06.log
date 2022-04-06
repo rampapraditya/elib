@@ -35,3 +35,27 @@ CRITICAL - 2022-04-06 02:17:13 --> Trying to get property 'path' of non-object
 #3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2022-04-06 03:05:16 --> Call to undefined method App\Models\Mcustom::getAllQR_nontb()
+#0 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Home->index()
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-04-06 03:07:10 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tentang' at line 1
+CRITICAL - 2022-04-06 03:07:10 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tentang' at line 1
+#0 /opt/lampp/htdocs/elib/system/Database/MySQLi/Connection.php(292): mysqli->query('tentang', 0)
+#1 /opt/lampp/htdocs/elib/system/Database/BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('tentang')
+#2 /opt/lampp/htdocs/elib/system/Database/BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('tentang')
+#3 /opt/lampp/htdocs/elib/app/Models/Mcustom.php(26): CodeIgniter\Database\BaseConnection->query('tentang')
+#4 /opt/lampp/htdocs/elib/app/Controllers/Home.php(45): App\Models\Mcustom->getAllQR('tentang')
+#5 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Home->index()
+#6 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-06 03:07:28 --> Call to undefined method App\Models\Mcustom::getAllQR_nontb()
+#0 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Home->index()
+#1 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}

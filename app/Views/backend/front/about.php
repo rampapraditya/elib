@@ -187,7 +187,7 @@
                                 ?>
                             <div class="carousel-item <?php if($counter == 0){ echo 'active'; } ?>">
                                 <div class="view">
-                                    <img class="d-block w-100" src="<?php echo base_url().substr($row->path, 2) ?>" alt="Slide">
+                                    <img class="d-block w-100" src="<?php echo base_url().'/uploads/'.$row->path ?>" alt="Slide">
                                     <div class="mask rgba-black-light"></div>
                                 </div>
                                 <div class="carousel-caption">

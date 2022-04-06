@@ -52,8 +52,8 @@ class About extends BaseController{
                 $val = array();
                 $def = base_url().'/assets/img/noimg.jpg';
                 if(strlen($row->path)){
-                    if(file_exists($row->path)){
-                        $def = base_url().substr($row->path, 1);
+                    if(file_exists(ROOTPATH.'public/uploads/'.$row->path)){
+                        $def = base_url().'/uploads/'.$row->path;
                     }
                 }
                 $val[] = $no;
@@ -138,18 +138,11 @@ class About extends BaseController{
     
     public function simpan_slider() {
         if($this->nativesession->get('logged_in')){
-            $config['upload_path'] = './assets/temp/';
-            $config['upload_newpath'] = './assets/img/';
-            $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_filename'] = '255';
-            $config['encrypt_name'] = TRUE;
-            $config['max_size'] = '3024'; //3 MB
-            
             if (isset($_FILES['file']['name'])) {
                 if(0 < $_FILES['file']['error']) {
                     $status = "Error during file upload ".$_FILES['file']['error'];
                 }else{
-                    $status = $this->simpandenganfoto($config);
+                    $status = $this->simpandenganfoto();
                 }
             }else{
                 $status = "File tidak ditemukan";
@@ -160,52 +153,43 @@ class About extends BaseController{
         }
     }
     
-    private function simpandenganfoto($config) {
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')) {
-
-            $datafile = $this->upload->data();
-            $path = $config['upload_path'].$datafile['file_name'];
-            $newpath = $config['upload_newpath'].$datafile['file_name'];
-
-            $resize_foto = $this->resizeImage($path, $newpath);
-            if($resize_foto){
+    private function simpandenganfoto() {
+        $file = $this->request->getFile('file');
+        $info_file = $this->modul->info_file($file);
+        
+        // cek nama file ada apa tidak
+        if(file_exists(ROOTPATH.'public/uploads/'.$info_file['name'])){
+            $status = "Gunakan nama file lain";
+        }else{
+            $status_upload = $file->move(ROOTPATH.'public/uploads');
+            if($status_upload){
                 $data = array(
                     'idslider_tentang' => $this->model->autokode('S','idslider_tentang', 'slider_tentang', 2, 7),
-                    'path' => $newpath,
+                    'path' => $info_file['name'],
                     'judul' => $this->request->getVar('judul'),
                     'keterangan' => $this->request->getVar('ket')
                 );
                 $simpan = $this->model->add("slider_tentang",$data);
                 if($simpan == 1){
-                    unlink($path);
                     $status = "Data tersimpan";
                 }else{
                     $status = "Data gagal tersimpan";
                 }
             }else{
-                $status = "Resize foto gagal";
+                $status = "Gagal upload data";
             }
-        } else {
-            $status = $this->upload->display_errors();
         }
+                
         return $status;
     }
     
     public function ganti_slider() {
         if($this->nativesession->get('logged_in')){
-            $config['upload_path'] = './assets/temp/';
-            $config['upload_newpath'] = './assets/img/';
-            $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_filename'] = '255';
-            $config['encrypt_name'] = TRUE;
-            $config['max_size'] = '3024'; //3 MB
-            
             if (isset($_FILES['file']['name'])) {
                 if(0 < $_FILES['file']['error']) {
                     $status = "Error during file upload ".$_FILES['file']['error'];
                 }else{
-                    $status = $this->update_slider_dengan_foto($config);
+                    $status = $this->update_slider_dengan_foto();
                 }
             }else{
                 $status = $this->update_slider_tanpa_foto();
@@ -216,42 +200,40 @@ class About extends BaseController{
         }
     }
     
-    private function update_slider_dengan_foto($config) {
+    private function update_slider_dengan_foto() {
         $lawas = $this->model->getAllQR("SELECT path FROM slider_tentang where idslider_tentang = '".$this->request->getVar('kode')."';")->path;
         if(strlen($lawas) > 0){
-            if(file_exists($lawas)){
-                unlink($lawas);
+            if(file_exists(ROOTPATH.'public/uploads/'.$lawas)){
+                unlink(ROOTPATH.'public/uploads/'.$lawas);
             }
         }
         
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')) {
-
-            $datafile = $this->upload->data();
-            $path = $config['upload_path'].$datafile['file_name'];
-            $newpath = $config['upload_newpath'].$datafile['file_name'];
-
-            $resize_foto = $this->resizeImage($path, $newpath);
-            if($resize_foto){
+        $file = $this->request->getFile('file');
+        $info_file = $this->modul->info_file($file);
+        
+        // cek nama file ada apa tidak
+        if(file_exists(ROOTPATH.'public/uploads/'.$info_file['name'])){
+            $status = "Gunakan nama file lain";
+        }else{
+            $status_upload = $file->move(ROOTPATH.'public/uploads');
+            if($status_upload){
                 $data = array(
-                    'path' => $newpath,
+                    'path' => $info_file['name'],
                     'judul' => $this->request->getVar('judul'),
                     'keterangan' => $this->request->getVar('ket')
                 );
                 $kond['idslider_tentang'] = $this->request->getVar('kode');
                 $update = $this->model->update("slider_tentang",$data,$kond);
                 if($update == 1){
-                    unlink($path);
                     $status = "Data terupdate";
                 }else{
                     $status = "Data gagal terupdate";
                 }
             }else{
-                $status = "Resize foto gagal";
+                $status = "Gagal upload data";
             }
-        } else {
-            $status = $this->upload->display_errors();
         }
+        
         return $status;
     }
     
@@ -270,24 +252,9 @@ class About extends BaseController{
         return $status;
     }
     
-    private function resizeImage($path, $newpath){
-        $config_manip = array(
-            'image_library' => 'gd2',
-            'source_image' => $path,
-            'new_image' => $newpath,
-            'maintain_ratio' => FALSE,
-            'width' => 800,
-            'height' => 600
-        );
-        $this->load->library('image_lib', $config_manip);
-        $hasil = $this->image_lib->resize();
-        $this->image_lib->clear();
-        return $hasil;
-    }
-    
     public function showslider(){
         if($this->nativesession->get('logged_in')){
-            $kondisi['idslider_tentang'] = $this->uri->segment(3);
+            $kondisi['idslider_tentang'] = $this->request->uri->getSegment(3);
             $data = $this->model->get_by_id("slider_tentang", $kondisi);
             echo json_encode($data);
         }else{

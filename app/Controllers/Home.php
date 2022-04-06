@@ -23,8 +23,8 @@ class Home extends BaseController
             $tersimpan_iden = $model->getAllQR("SELECT logo, alamat, email, tlp FROM identitas;");
             $logo = base_url().'assets/images/no_image.png';
             if(strlen($tersimpan_iden->logo) > 0){
-                if(file_exists($tersimpan_iden->logo)){
-                    $logo = base_url().substr($tersimpan_iden->logo, 2);
+                if(file_exists(ROOTPATH.'public/uploads/'.$tersimpan_iden->logo)){
+                    $logo = base_url().'/uploads/'.$tersimpan_iden->logo;
                 }
             }
             $data['logo'] = $logo;
@@ -42,7 +42,7 @@ class Home extends BaseController
         // about
         $jml_tentang = $this->model->select_count("tentang", "idtentang");
         if($jml_tentang > 0){
-            $tersimpan_tentang = $this->model->getAllQR_nontb("tentang");
+            $tersimpan_tentang = $this->model->getAllQR("select * from tentang");
             $data['tentang'] = $tersimpan_tentang->pesan;
         }else{
             $data['tentang'] = "";
@@ -53,7 +53,7 @@ class Home extends BaseController
         // media sosial
         $jml = $model->select_count("medsos", "idmedsos");
         if($jml > 0){
-            $tersimpan_med = $model->getAllQR_nontb("medsos");
+            $tersimpan_med = $model->getAllQR("select * from medsos");
             $data['tw'] = $tersimpan_med->tw;
             $data['ig'] = $tersimpan_med->ig;
             $data['fb'] = $tersimpan_med->fb;
