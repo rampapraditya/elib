@@ -40,28 +40,15 @@ class Mcustom {
         return $query;
     }
     
-    public function getAllQR_tb($tb_name, $kondisi) {
-        $builder = $this->db->table($tb_name);
-        $builder->where($kondisi);
-        $query = $builder->get();
-        return $query->getRowObject();
-    }
-    
-    public function getAllQR_nontb($tb_name) {
-        $builder = $this->db->table($tb_name);
-        $query = $builder->get();
-        return $query->getRowObject();
-    }
-    
     public function add($table, $data){
         $builder = $this->db->table($table);
         return $builder->insert($data);
     }
     
     public function delete($table,$kondisi){
-        $this->db->where($kondisi);
-        $delete = $this->db->delete($table);
-        return $delete;
+        $builder = $this->db->table($table);
+        $builder->where($kondisi);
+        return $builder->delete();
     }
     
     public function update($table, $data, $condition){

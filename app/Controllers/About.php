@@ -297,12 +297,12 @@ class About extends BaseController{
     
     public function hapusslider() {
         if($this->nativesession->get('logged_in')){
-            $idslider_tentang = $this->uri->segment(3);
+            $idslider_tentang = $this->request->uri->getSegment(3);
             
             $lawas = $this->model->getAllQR("SELECT path FROM slider_tentang where idslider_tentang = '".$idslider_tentang."';")->path;
             if(strlen($lawas) > 0){
-                if(file_exists($lawas)){
-                    unlink($lawas);
+                if(file_exists(ROOTPATH.'public/uploads/'.$lawas)){
+                    unlink(ROOTPATH.'public/uploads/'.$lawas);
                 }
             }
             
@@ -313,6 +313,7 @@ class About extends BaseController{
             }else{
                 $status = "Data gagal terhapus";
             }
+            
             echo json_encode(array("status" => $status));
         }else{
             $this->modul->halaman('login');

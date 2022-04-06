@@ -46,8 +46,8 @@ class Identitas extends Controller{
                 $data['website'] = $tersimpan->website;
                 $deflogo = base_url().'/assets/img/noimg.jpg';
                 if(strlen($tersimpan->logo) > 0){
-                    if(file_exists($tersimpan->logo)){
-                        $deflogo = base_url().substr($tersimpan->logo, 1);
+                    if(file_exists(ROOTPATH.'public/uploads/'.$tersimpan->logo)){
+                        $deflogo = base_url().'/upload/'.$tersimpan->logo;
                     }
                 }
                 $data['logo'] = $deflogo;
@@ -110,16 +110,15 @@ class Identitas extends Controller{
         }
     }
     
-    private function simpandenganfoto($config) {
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')) {
-
-            $datafile = $this->upload->data();
-            $path = $config['upload_path'].$datafile['file_name'];
-            $newpath = $config['upload_newpath'].$datafile['file_name'];
-
-            $resize_foto = $this->resizeImage($path, $newpath);
-            if($resize_foto){
+    private function simpandenganfoto() {
+        $file = $this->request->getFile('file');
+        $info_file = $this->modul->info_file($file);
+        
+        if(file_exists(ROOTPATH.'public/uploads/'.$info_file['name'])){
+            $status = "Gunakan nama file lain";
+        }else{
+            $status_upload = $file->move(ROOTPATH.'public/uploads');
+            if($status_upload){
                 $data = array(
                     'kode' => $this->model->autokode('I','kode', 'identitas', 2, 7),
                     'instansi' => $this->input->getVar('nama'),
@@ -132,23 +131,21 @@ class Identitas extends Controller{
                     'fax' => $this->input->getVar('fax'),
                     'email' => $this->input->getVar('email'),
                     'website' => $this->input->getVar('web'),
-                    'logo' => $newpath,
+                    'logo' => $info_file['name'],
                     'lat' => $this->input->getVar('lat'),
                     'lon' => $this->input->getVar('lon')
                 );
                 $simpan = $this->model->add("identitas",$data);
                 if($simpan == 1){
-                    unlink($path);
                     $status = "Identitas tersimpan";
                 }else{
                     $status = "Identitas gagal tersimpan";
                 }
             }else{
-                $status = "Resize foto gagal";
+                $status = "File gagal terupload";
             }
-        } else {
-            $status = $this->upload->display_errors();
         }
+                
         return $status;
     }
     
@@ -246,20 +243,5 @@ class Identitas extends Controller{
             $status = "Identitas gagal terupdate";
         }
         return $status;
-    }
-    
-    private function resizeImage($path, $newpath){
-        $config_manip = array(
-            'image_library' => 'gd2',
-            'source_image' => $path,
-            'new_image' => $newpath,
-            'maintain_ratio' => TRUE,
-            'width' => 150,
-            'height' => 150
-        );
-        $this->load->library('image_lib', $config_manip);
-        $hasil = $this->image_lib->resize();
-        $this->image_lib->clear();
-        return $hasil;
     }
 }
