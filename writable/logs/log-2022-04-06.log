@@ -1,0 +1,9 @@
+CRITICAL - 2022-04-06 01:26:21 --> mkdir(): Permission denied
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): Permis...', '/opt/lampp/htdo...', 382, Array)
+#1 /opt/lampp/htdocs/elib/app/Libraries/Modul.php(382): mkdir('/opt/lampp/htdo...', 493, true)
+#2 /opt/lampp/htdocs/elib/app/Controllers/Login.php(52): App\Libraries\Modul->buat_folder('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/elib/system/CodeIgniter.php(832): App\Controllers\Login->proses()
+#4 /opt/lampp/htdocs/elib/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /opt/lampp/htdocs/elib/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /opt/lampp/htdocs/elib/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

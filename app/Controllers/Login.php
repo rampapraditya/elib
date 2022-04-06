@@ -47,8 +47,8 @@ class Login extends BaseController{
                 $this->nativesession->set('subfolder', $data->idusers);
                 $this->nativesession->set('tautan_utama', substr(base_url(), 0, strlen(base_url())-1));
                 // membuat folder
-                $path_source = "./media/".$data->idusers;
-                $path_thumbs = "./thumbs/".$data->idusers;
+                $path_source = ROOTPATH."public/media/".$data->idusers;
+                $path_thumbs = ROOTPATH."public/thumbs/".$data->idusers;
                 $this->modul->buat_folder($path_source);
                 $this->modul->buat_folder($path_thumbs);
 

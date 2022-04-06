@@ -81,13 +81,6 @@ class Identitas extends Controller{
     
     public function proses() {
         if($this->nativesession->get('logged_in')){
-            $config['upload_path'] = './assets/temp/';
-            $config['upload_newpath'] = './assets/img/';
-            $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_filename'] = '255';
-            $config['encrypt_name'] = TRUE;
-            $config['max_size'] = '3024'; //3 MB
-            
             $mode = "simpan";
             $jml = $this->model->getAllQR("SELECT count(*) as jml FROM identitas;")->jml;
             if($jml > 0){
@@ -99,9 +92,9 @@ class Identitas extends Controller{
                     $status = "Error during file upload ".$_FILES['file']['error'];
                 }else{
                     if($mode == "simpan"){
-                        $status = $this->simpandenganfoto($config);
+                        $status = $this->simpandenganfoto();
                     }else if($mode == "update"){
-                        $status = $this->updatedenganfoto($config);
+                        $status = $this->updatedenganfoto();
                     }
                 }
             }else{
@@ -159,65 +152,48 @@ class Identitas extends Controller{
         return $status;
     }
     
-    private function updatedenganfoto($config) {
+    private function updatedenganfoto() {
         $logo = $this->model->getAllQR("SELECT logo FROM identitas;")->logo;
         if(strlen($logo) > 0){
-            if(file_exists($logo)){
-                unlink($logo); 
+            if(file_exists(WRITEPATH.$logo)){
+                unlink(WRITEPATH.$logo); 
             }
         }
-//        
-//        $this->load->library('upload', $config);
-//        if ($this->upload->do_upload('file')) {
-//
-//            $datafile = $this->upload->data();
-//            $path = $config['upload_path'].$datafile['file_name'];
-//            $newpath = $config['upload_newpath'].$datafile['file_name'];
-//
-//            $resize_foto = $this->resizeImage($path, $newpath);
-//            if($resize_foto){
-//                $data = array(
-//                    'instansi' => $this->request->getVar('nama'),
-//                    'slogan' => $this->request->getVar('slogan'),
-//                    'tahun' => $this->request->getVar('tahun'),
-//                    'pimpinan' => $this->request->getVar('pimpinan'),
-//                    'alamat' => $this->request->getVar('alamat'),
-//                    'kdpos' => $this->request->getVar('kdpos'),
-//                    'tlp' => $this->request->getVar('tlp'),
-//                    'fax' => $this->request->getVar('fax'),
-//                    'email' => $this->request->getVar('email'),
-//                    'website' => $this->request->getVar('web'),
-//                    'lat' => $this->request->getVar('lat'),
-//                    'lon' => $this->request->getVar('lon'),
-//                    'logo' => $newpath
-//                );
-//                $update = $this->model->updateNK("identitas",$data);
-//                if($update == 1){
-//                    unlink($path);
-//                    $status = "Identitas terupdate";
-//                }else{
-//                    $status = "Identitas gagal terupdate";
-//                }
-//            }else{
-//                $status = "Resize foto gagal";
-//            }
-//        } else {
-//            $status = $this->upload->display_errors();
-//        }
         
         $file = $this->request->getFile('file');
-        $name = $file->getName();// Mengetahui Nama File
-        $originalName = $file->getClientName();// Mengetahui Nama Asli
-        $tempfile = $file->getTempName();// Mengetahui Nama TMP File name
-        $ext = $file->getClientExtension();// Mengetahui extensi File
-        $type = $file->getClientMimeType();// Mengetahui Mime File
-        $size_kb = $file->getSize('kb'); // Mengetahui Ukuran File dalam kb
-        $size_mb = $file->getSize('mb');// Mengetahui Ukuran File dalam mb
-        //$namabaru = $file->getRandomName();//define nama fiel yang baru secara acak
+        $info_file = $this->modul->info_file($file);
         
-        $file->move(WRITEPATH . 'uploads');
-        $status = $name.' '.$originalName.' ' . $size_kb;
-        
+        // cek nama file ada apa tidak
+        if(file_exists(WRITEPATH.'uploads/'.$info_file['name'])){
+            $status = "Gunakan nama file lain";
+        }else{
+            $status_upload = $file->move(WRITEPATH.'uploads');
+            if($status_upload){
+                $data = array(
+                    'instansi' => $this->request->getVar('nama'),
+                    'slogan' => $this->request->getVar('slogan'),
+                    'tahun' => $this->request->getVar('tahun'),
+                    'pimpinan' => $this->request->getVar('pimpinan'),
+                    'alamat' => $this->request->getVar('alamat'),
+                    'kdpos' => $this->request->getVar('kdpos'),
+                    'tlp' => $this->request->getVar('tlp'),
+                    'fax' => $this->request->getVar('fax'),
+                    'email' => $this->request->getVar('email'),
+                    'website' => $this->request->getVar('web'),
+                    'lat' => $this->request->getVar('lat'),
+                    'lon' => $this->request->getVar('lon'),
+                    'logo' => 'uploads/'.$info_file['name']
+                );
+                $update = $this->model->updateNK("identitas",$data);
+                if($update == 1){
+                    $status = "Identitas terupdate";
+                }else{
+                    $status = "Identitas gagal terupdate";
+                }
+            }else{
+                $status = "File gagal terupload";
+            }
+        }
         
         return $status;
     }
